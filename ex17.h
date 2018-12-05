@@ -123,6 +123,17 @@
 static int verb = 0; /**< verbose level, global within the file */
 
 /* ---------------------------------------------------------------------- */
+/* tipo quintupla: representacao formal de um automato */
+typedef struct st_quintupla
+{
+    unsigned short int K;   /* conjunto de estados */
+    char A;                 /* alfabeto */
+    unsigned short int S;   /* estado inicial */
+    t_lef *F;               /* lista de estados finais */
+    t_lft *D;               /* lista da funcao de transicao d(ei, le, ef) */
+} t_quintupla;
+
+/* ---------------------------------------------------------------------- */
 /* prototypes */
 
 void help(void); /**< Prints help information and exit */
