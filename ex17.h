@@ -130,6 +130,15 @@ typedef struct st_lef
     struct st_lef *prox;
 } t_lef;
 
+/* tipo lista encadeada simples da funcao de transicao */
+typedef struct st_lft
+{
+    unsigned short int ei;  /* estado inicial */
+    char *le;               /* le (string com rotulos) */
+    unsigned short int ef;  /* estado final */
+    struct st_lft *prox;
+} t_lft;
+
 /* tipo quintupla: representacao formal de um automato */
 typedef struct st_quintupla
 {
