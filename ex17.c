@@ -184,6 +184,8 @@ void ex17_init(void); /* global initialization function */
 int main(int argc, char *argv[])
 {
     int opt; /* return from getopt() */
+    FILE *arq = NULL;
+    char sfile[SBUFF];
 
     IFDEBUG("Starting optarg loop...");
 
@@ -215,9 +217,15 @@ int main(int argc, char *argv[])
         printf("Verbose level set at: %d\n", verb);
 
     ex17_init(); /* initialization function */
+    
+    /* --- */
+    arq = fopen(sfile, "r"); /* Ponteiro leitor do arquivo em txt */
+    if(arq == NULL)
+    {
+        printf("Erro ao abrir o arquivo\n");
+        exit(0);
+    }
 
-    /* ...and we are done */
-    /* Write your code here... */
 
     return EXIT_SUCCESS;
 }
