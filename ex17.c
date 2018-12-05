@@ -207,6 +207,9 @@ int main(int argc, char *argv[])
             case 'v':
                 verb++;
                 break;
+            case 'f':
+                strcpy(sfile, optarg);
+                break;
             case '?':
             default:
                 printf("Type\n\t$man %s\nor\n\t$%s -h\nfor help.\n\n", argv[0], argv[0]);
