@@ -123,6 +123,13 @@
 static int verb = 0; /**< verbose level, global within the file */
 
 /* ---------------------------------------------------------------------- */
+/* tipo lista encadeada simples dos estados finais */
+typedef struct st_lef
+{
+    unsigned short int f;
+    struct st_lef *prox;
+} t_lef;
+
 /* tipo quintupla: representacao formal de um automato */
 typedef struct st_quintupla
 {
