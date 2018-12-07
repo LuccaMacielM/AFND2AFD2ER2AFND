@@ -188,6 +188,7 @@ int main(int argc, char *argv[])
     char sfile[SBUFF]; 
     char data[SBUFF];
 
+    printf("Use uma das flags para realizar uma operacao. A flag -h eh a de ajuda.\n");
     IFDEBUG("Starting optarg loop...");
 
     /* getopt() configured options:
@@ -215,7 +216,7 @@ int main(int argc, char *argv[])
                 if(arq == NULL)
                 {
                     printf("Erro ao abrir o arquivo\n");
-                    exit(0);
+                    exit(1);
                 }
                 while(!feof(arq)) /* percorre todo o arquivo */
                 {
@@ -223,6 +224,7 @@ int main(int argc, char *argv[])
                     printf("%s\n", data);
                 }
                 fclose(arq);
+                printf("Arquivo aberto com sucesso\n");
                 break;
             
             case '?':
@@ -260,6 +262,7 @@ void help(void)
     printf("\nUsage: %s [-h|-v]\n", "ex17");
     printf("\nOptions:\n");
     printf("\t-h,  --help\n\t\tShow this help.\n");
+    printf("\t-f,  --include file\n\t\tUse the command './ex17.x -f file' to pass the 'file' arq (with the automatum data) to the program.\n");
     printf("\t-V,  --version\n\t\tShow version and copyright information.\n");
     printf("\t-v,  --verbose\n\t\tSet verbose level (cumulative).\n");
     /* add more options here */
