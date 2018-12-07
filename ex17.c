@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
 {
     int opt; /* return from getopt() */
     FILE *arq = NULL;
-    /* char sfile[SBUFF]; */
+    char sfile[SBUFF]; 
     char data[SBUFF];
 
     IFDEBUG("Starting optarg loop...");
@@ -208,11 +208,23 @@ int main(int argc, char *argv[])
             case 'v':
                 verb++;
                 break;
-            /*
+            
             case 'f':
                 strcpy(sfile, optarg);
+                arq = fopen(sfile, "r"); /* Ponteiro leitor do arquivo em txt */
+                if(arq == NULL)
+                {
+                    printf("Erro ao abrir o arquivo\n");
+                    exit(0);
+                }
+                while(!feof(arq)) /* percorre todo o arquivo */
+                {
+                    fgets(data, SBUFF, arq); /* pegar a linha atual */
+                    printf("%s\n", data);
+                }
+                fclose(arq);
                 break;
-            */
+            
             case '?':
             default:
                 printf("Type\n\t$man %s\nor\n\t$%s -h\nfor help.\n\n", argv[0], argv[0]);
@@ -224,19 +236,6 @@ int main(int argc, char *argv[])
 
     ex17_init(); /* initialization function */
     
-    /* --- */
-    arq = fopen("01-entrada-AFND.txt", "r"); /* Ponteiro leitor do arquivo em txt */
-    if(arq == NULL)
-    {
-        printf("Erro ao abrir o arquivo\n");
-        exit(0);
-    }
-    while(!feof(arq)) /* percorre todo o arquivo */
-    {
-        fgets(data, SBUFF, arq); /* pegar a linha atual */
-        printf("%s\n", data);
-    }
-    fclose(arq);
 
     return EXIT_SUCCESS;
 }
