@@ -315,7 +315,19 @@ void copyr(void)
 {
     IFDEBUG("copyr()");
     printf("%s - Version %s\n", "ex17", VERSION);
-    printf("\nCopyright (C) %d %s <%s>, GNU GPL version 2 <http://gnu.org/licenses/gpl.html>. This  is  free  software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. USE IT AS IT IS. The author takes no responsability to any damage this software may inflige in your data.\n\n", 2018, "Iago Gade Gusmao Carrazzoni", "iagocarrazzoni@gmail.com");
+    printf("\nCopyright (C) %d, GNU GPL version 2 <http://gnu.org/licenses/gpl.html>. This  is  free  software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. USE IT AS IT IS. The author takes no responsability to any damage this software may inflige in your data.\n\n", 2018);
+    printf("\t\t %s <%s>\n", "Adriano Pedro Couto Dos Santos", "adrianoha992@gmail.com");
+    printf("\t\t %s <%s>\n", "Brenda Nascimento Felisardo da Silva", "Brenda10.bsj@gmail.com");
+    printf("\t\t %s <%s>\n", "Caio Mendes de Oliveira Franca", "caiomof@gmail.com");
+    printf("\t\t %s <%s>\n", "Eduardo Andrade de Oliveira", "duduoliveira1104@gmail.com");
+    printf("\t\t %s <%s>\n", "Eduardo Couto Dinarte", "eduardocoutod3@gmail.com");
+    printf("\t\t %s <%s>\n", "Ewerton Gomes dos Santos", "ewerton.gomes.santos@gmail.com");
+    printf("\t\t %s <%s>\n", "Iago Gade Gusmao Carrazzoni", "iagocarrazzoni@gmail.com");
+    printf("\t\t %s <%s>\n", "Lucas Tejo Sena", "tejo.lucas13@gmail.com");
+    printf("\t\t %s <%s>\n", "Lucca Maciel de Moraes", "luccamacielm@gmail.com");
+    printf("\t\t %s <%s>\n", "Matheus Lemos Dantas", "matheuslemosdantas@gmail.com");
+    printf("\t\t %s <%s>\n", "Vinicius Araujo Germano Romao", "araujovinicius428@gmail.com");
+    printf("\t\t %s <%s>\n", "Yasmim Vitoria Correia de Sousa", "yasmimvitoria10@gmail.com");
     if(verb > 3) printf("copyr(): Verbose: %d\n", verb); /* -vvvv */
     exit(EXIT_FAILURE);
 }
