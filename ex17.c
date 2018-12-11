@@ -18,11 +18,20 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************
- *   To contact the author, please write to:                               *
- *   Iago Gade Gusmao Carrazzoni                                           *
- *   Email: iagocarrazzoni@gmail.com                                       *
- *   Webpage: http://www.upe.br                                            *
- *   Phone: +55 (81) 99479-0584                                            *
+ *   To contact the authors, please write to:                              *
+ *                                                                         *
+ *   Adriano Pedro Couto dos Santos        <adrianoha992@gmail.com>        *
+ *   Brenda Nascimento Felisardo da Silva  <Brenda10.bsj@gmail.com>        *
+ *   Caio Mendes de Oliveira Franca        <caiomof@gmail.com>             *
+ *   Eduardo Andrade de Oliveira           <duduoliveira1104@gmail.com>    *
+ *   Eduardo Couto Dinarte                 <eduardocoutod3@gmail.com>      *
+ *   Ewerton Gomes dos Santos              <ewerton.gomes.santos@gmail.com>*
+ *   Iago Gade Gusmao Carrazzoni           <iagocarrazzoni@gmail.com>      *
+ *   Lucas Tejo Sena                       <tejo.lucas13@gmail.com>        *
+ *   Lucca Maciel de Moraes                <luccamacielm@gmail.com>        *
+ *   Matheus Lemos Dantas                  <matheuslemosdantas@gmail.com>  *
+ *   Vinicius Araujo Germano Romao         <araujovinicius428@gmail.com>   *
+ *   Yasmim Vitoria Correia de Sousa       <yasmimvitoria10@gmail.com>     *
  ***************************************************************************/
 
 /* ---------------------------------------------------------------------- */
