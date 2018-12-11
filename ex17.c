@@ -198,6 +198,7 @@ int main(int argc, char *argv[])
      */
     opterr = 0;
     while((opt = getopt(argc, argv, "vhV")) != EOF)
+    {
         switch(opt)
         {
             case 'h':
@@ -232,17 +233,23 @@ int main(int argc, char *argv[])
                 printf("Type\n\t$man %s\nor\n\t$%s -h\nfor help.\n\n", argv[0], argv[0]);
                 return EXIT_FAILURE;
         }
-
+    }
     if(verb)
         printf("Verbose level set at: %d\n", verb);
 
     ex17_init(); /* initialization function */
     
-
     return EXIT_SUCCESS;
 }
 
-/* Write your functions here... */
+/* ---------------------------------------------------------------------- */
+/* ex11 - AFND to AFD */
+
+/* ---------------------------------------------------------------------- */
+/* ex12 - AFD to ER */
+
+/* ---------------------------------------------------------------------- */
+/* ex16 - ER to AFND */
 
 /* ---------------------------------------------------------------------- */
 /**
