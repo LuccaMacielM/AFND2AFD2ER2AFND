@@ -246,7 +246,7 @@ int main(int argc, char *argv[])
     if(verb)
         printf("Verbose level set at: %d\n", verb);
 
-    ex17_init(); /* initialization function */
+    /* ex17_init(); */ /* initialization function */
 
     return EXIT_SUCCESS;
 }
