@@ -210,7 +210,7 @@ int main(int argc, char *argv[])
             case 'v':
                 verb++;
                 break;
-            
+
             case 'f':
                 strcpy(sfile, optarg);
                 arq = fopen(sfile, "r"); /* Ponteiro leitor do arquivo em txt */
@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
                 fclose(arq);
                 printf("Arquivo aberto com sucesso\n");
                 break;
-            
+
             case '?':
             default:
                 printf("Type\n\t$man %s\nor\n\t$%s -h\nfor help.\n\n", argv[0], argv[0]);
@@ -238,7 +238,7 @@ int main(int argc, char *argv[])
         printf("Verbose level set at: %d\n", verb);
 
     ex17_init(); /* initialization function */
-    
+
     return EXIT_SUCCESS;
 }
 
@@ -275,7 +275,19 @@ void help(void)
     /* add more options here */
     printf("\nExit status:\n\t0 if ok.\n\t1 some error occurred.\n");
     printf("\nTodo:\n\tLong options not implemented yet.\n");
-    printf("\nAuthor:\n\tWritten by %s <%s>\n\n", "Iago Gade Gusmao Carrazzoni", "iagocarrazzoni@gmail.com");
+    printf("\nAuthors:\n\tWritten by :\n");
+    printf("\t\t %s <%s>\n", "Adriano Pedro Couto Dos Santos", "@adroutos");
+    printf("\t\t %s <%s>\n", "Brenda Nascimento Felisardo da Silva", "@brenda100");
+    printf("\t\t %s <%s>\n", "Caio Mendes de Oliveira Franca", "@Caiomof");
+    printf("\t\t %s <%s>\n", "Eduardo Andrade de Oliveira", "@EduardoAO1104");
+    printf("\t\t %s <%s>\n", "Eduardo Couto Dinarte", "@dudecd3");
+    printf("\t\t %s <%s>\n", "Ewerton Gomes dos Santos", "@Ewertongsantos");
+    printf("\t\t %s <%s>\n", "Iago Gade Gusmao Carrazzoni", "@iagoggcarrazzoni");
+    printf("\t\t %s <%s>\n", "Lucas Tejo Sena", "@lucas-sena");
+    printf("\t\t %s <%s>\n", "Lucca Maciel de Moraes", "@LuccaMacielM");
+    printf("\t\t %s <%s>\n", "Matheus Lemos Dantas", "@mld2000");
+    printf("\t\t %s <%s>\n", "Vinicius Araujo Germano Romao", "@ViniciusAraujoGR");
+    printf("\t\t %s <%s>\n", "Yasmim Vitoria Correia de Sousa", "@yasmim13");
     exit(EXIT_FAILURE);
 }
 
