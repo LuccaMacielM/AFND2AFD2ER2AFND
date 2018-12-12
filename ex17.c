@@ -480,6 +480,30 @@ void uniao_simultaneos(t_ll **cabeca, t_ll *lista)
         listinha=listinha->prox;
     }
 }
+void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned short int f)
+{
+    t_lft  *pl=*cabeca;
+    t_lft  *plant=NULL;
+
+    while(pl!=NULL)
+    {
+        plant=pl;
+        pl=pl->prox;
+    }
+
+    pl=malloc(sizeof(t_lft));
+
+    pl->ei=i;
+    pl->le=a;
+    pl->ef=f;
+
+    pl->prox=NULL;
+
+    if(plant!=NULL)
+        plant->prox=pl;
+    else
+        *cabeca=pl;
+}
 
 
 /* ---------------------------------------------------------------------- */
