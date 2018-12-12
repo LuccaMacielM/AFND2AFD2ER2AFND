@@ -554,6 +554,18 @@ void limpar(t_lft **lista)//Remove todos os nM-CM-3s da Lista
     return;
 }
 
+void  imprimir_estados(t_lef *cabeca)
+{
+    t_lef *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        printf("%u->",pl->f);
+        pl=pl->prox;
+    }
+    printf("NULL\n");
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
