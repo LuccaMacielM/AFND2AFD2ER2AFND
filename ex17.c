@@ -479,6 +479,7 @@ void inserir_na_principal(t_lprinc **cabeca, unsigned short int fin, t_ll *lista
     else
         *cabeca=pl;
 }
+
 void uniao_simultaneos(t_ll **cabeca, t_ll *lista)
 {
     t_ll *ax=NULL;
@@ -492,6 +493,7 @@ void uniao_simultaneos(t_ll **cabeca, t_ll *lista)
         listinha=listinha->prox;
     }
 }
+
 void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned short int f)
 {
     t_lft  *pl=*cabeca;
@@ -516,6 +518,7 @@ void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned 
     else
         *cabeca=pl;
 }
+
 void  imprimir_principal(t_lprinc *cabeca)
 {
     t_lprinc *pl=cabeca;
@@ -528,6 +531,7 @@ void  imprimir_principal(t_lprinc *cabeca)
     }
     printf("NULL\n");
 }
+
 void  imprimir_listinha(t_ll  *cabeca)
 {
     t_ll *pl=cabeca;
