@@ -479,6 +479,20 @@ bool ja_faz_parte(t_lprinc *a,t_ll *b)
     return false;
 }
 
+/* retorna o tamanho de uma lista */
+int tamanho(t_ll *x)
+{
+    int cont=0;
+
+    while(x!=NULL)
+    {
+        cont++;
+        x=x->prox;
+    }
+
+    return cont;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
