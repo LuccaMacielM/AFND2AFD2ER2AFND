@@ -336,7 +336,7 @@ void ex11(void)
 
     return ;
 }
-inserir_delta(t_lft **cabeca, char *x)
+void inserir_delta(t_lft **cabeca, char *x)
 {
     t_lft  *pl=*cabeca;
     t_lft  *plant=NULL;
@@ -364,7 +364,29 @@ inserir_delta(t_lft **cabeca, char *x)
     else
         *cabeca=pl;
 }
-* ---------------------------------------------------------------------- */
+void inserir_estados_finais(t_lef **cabeca,unsigned short int ini)
+{
+    t_lef  *pl=*cabeca;
+    t_lef  *plant=NULL;
+
+    while(pl!=NULL)
+    {
+        plant=pl;
+        pl=pl->prox;
+    }
+
+    pl=malloc(sizeof(t_lef));
+
+    pl->f=ini;
+    pl->prox=NULL;
+
+    if(plant!=NULL)
+        plant->prox=pl;
+    else
+        *cabeca=pl;
+}
+
+*/ ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
 
 /* ---------------------------------------------------------------------- */
