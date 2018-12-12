@@ -467,6 +467,19 @@ void inserir_na_principal(t_lprinc **cabeca, unsigned short int fin, t_ll *lista
     else
         *cabeca=pl;
 }
+void uniao_simultaneos(t_ll **cabeca, t_ll *lista)
+{
+    t_ll *ax=NULL;
+    t_ll *listinha=lista;
+
+    while(listinha!=NULL)
+    {
+        ax=buscar(*cabeca, listinha->fi);
+        if(ax==NULL)
+            inserir_na_listinha(cabeca,listinha->fi);
+        listinha=listinha->prox;
+    }
+}
 
 
 /* ---------------------------------------------------------------------- */
