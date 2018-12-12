@@ -147,7 +147,7 @@
 /* ---------------------------------------------------------------------- */
 /* globals */
 
-static int verb = 0; /**< verbose level, global within the file */
+static int verb = 0; /*< verbose level, global within the file */
 
 /* ---------------------------------------------------------------------- */
 /* prototypes */
