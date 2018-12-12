@@ -416,6 +416,37 @@ int buscar_indice(t_lprinc  *a, t_ll *b)
     return -1;
 }
 
+/* funcao que identifica e imprime os novos estados finais (sendo todos os novos estados que tenham como conteudo os antigos estados finais)*/
+void imprimir_novos_finais(t_lprinc  *cabeca, t_lef *x)
+{
+    t_lprinc  *pl=cabeca;
+    t_lprinc  *plant=pl;
+    t_ll *sim=pl->simul;
+
+    while(x!=NULL)
+    {
+        pl=plant;
+        pl->simul=sim;
+
+        while(pl!=NULL)
+        {
+
+            while(pl->simul!=NULL)
+            {
+                if(pl->simul->fi==x->f)
+                    printf("-P%u\n",pl->indice);
+
+                pl->simul=pl->simul->prox;
+            }
+            pl=pl->prox;
+        }
+        x=x->prox;
+    }
+
+    return;
+}
+
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
