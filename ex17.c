@@ -92,6 +92,7 @@
 #include <stdlib.h> /* Miscellaneous functions (rand, malloc, srand)*/
 #include <getopt.h> /* get options from system argc/argv */
 #include <string.h> /* Strings functions definitions */
+#include "ex17.h"  /* To be created for this template if needed */
 
 /* To include assert.h for diagnostics, do it after #define DEBUG bellow */
 /* #include <time.h> */ /* Time and date functions */
@@ -119,7 +120,6 @@
 /* #include <allegro.h> */ /* A game library for graphics, sounds, etc. */
 /* #include <SWI-Prolog.h> */ /* Prolog integration with C */
 /* #include "libeco.h" */ /* I/O, Math, Sound, Color, Portable Linux/Windows */
-/* #include "ex17.h" */ /* To be created for this template if needed */
 
 /* ---------------------------------------------------------------------- */
 /* definitions */
@@ -148,13 +148,6 @@
 /* globals */
 
 static int verb = 0; /**< verbose level, global within the file */
-
-/* ---------------------------------------------------------------------- */
-/* prototypes */
-
-void help(void); /* print some help */
-void copyr(void); /* print version and copyright information */
-void ex17_init(void); /* global initialization function */
 
 /* ---------------------------------------------------------------------- */
 /**
@@ -280,7 +273,7 @@ void ex11(void)
             exit(1);
         }
 
-        while(fgets(linha[a], 10, file) != NULL) /*laca que atrbui cada linha a um vetor de strings*/
+        while(fgets(linha[a], 10, file) != NULL) /* laco que atribui cada linha a um vetor de strings */
             a++;
 
         /* ------------------------------------ N ESTADOS -------------------------------------- */
