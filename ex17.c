@@ -446,6 +446,26 @@ void imprimir_novos_finais(t_lprinc  *cabeca, t_lef *x)
     return;
 }
 
+t_ll *gera_estado(t_lft *deltas,t_ll *estado ,char letra,t_lprinc *simultaneos)
+{
+    t_ll *est_novo=NULL,*aux=NULL;
+    unsigned short int k=0;
+
+    while(estado!=NULL)
+    {
+        if(busca_trans(deltas,estado->fi,letra)!=(unsigned short int)-1)
+            inserir_na_listinha(&aux,busca_trans(deltas,estado->fi,letra));
+        k++;
+        estado=estado->prox;
+    }
+    while(aux!=NULL)
+    {
+        uniao_simultaneos(&est_novo,buscar_principal(simultaneos,aux->fi));
+        aux=aux->prox;
+    }
+
+    return est_novo;
+}
 
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
