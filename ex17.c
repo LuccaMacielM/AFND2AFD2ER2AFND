@@ -579,6 +579,48 @@ t_ll *buscar(t_ll  *cabeca, unsigned short int x)
     return  NULL;
 }
 
+/* Descricao: A funcao insere os estados simultaneos em sua repectiva lista
+ *  *  * Entrada: Quintupla do Automato
+ *   *   * Saida: Lista de estados simultaneos */
+
+t_lprinc *acha_simultaneos(t_lft *cabeca,unsigned short int nes)
+{
+    unsigned short int aux=0;
+    t_lprinc *sm=NULL;
+    t_ll  *ls,*lista=NULL,*ax=NULL;
+    t_lft *pl=cabeca;
+
+    while(aux<nes)
+    {
+        inserir_na_listinha(&lista,aux);
+        ls = lista;
+        while(ls!= NULL)
+        {
+            while(pl!=NULL)
+            {
+                if(pl->ei==ls->fi && pl->le== 'E')
+                {
+                    ax=buscar(lista, pl->ef);
+                    if(ax==NULL)
+                        inserir_na_listinha(&lista,pl->ef);
+                }
+
+                pl=pl->prox;
+            }
+            ls = ls->prox;
+            pl=cabeca;
+        }
+        inserir_na_principal(&sm,aux,lista);
+        lista=NULL;
+        aux++;
+    }
+    printf("\nEstados / Simultaneos\n");
+    imprimir_principal(sm);
+    printf("Retornou\n");
+
+    return sm;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
