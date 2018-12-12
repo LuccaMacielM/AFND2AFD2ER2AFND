@@ -516,6 +516,32 @@ void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned 
     else
         *cabeca=pl;
 }
+void  imprimir_principal(t_lprinc *cabeca)
+{
+    t_lprinc *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        printf("P%u: ",pl->indice);
+        imprimir_listinha(pl->simul);
+        pl=pl->prox;
+    }
+    printf("NULL\n");
+}
+
+void  imprimir_listinha(t_ll  *cabeca)
+{
+    t_ll *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        printf("%u->",pl->fi);
+        pl=pl->prox;
+    }
+    printf("NULL\n");
+}
+
+
 
 
 /* ---------------------------------------------------------------------- */
