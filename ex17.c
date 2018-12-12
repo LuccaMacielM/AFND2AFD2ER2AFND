@@ -336,8 +336,35 @@ void ex11(void)
 
     return ;
 }
+inserir_delta(t_lft **cabeca, char *x)
+{
+    t_lft  *pl=*cabeca;
+    t_lft  *plant=NULL;
+    char aux[2];
 
-/* ---------------------------------------------------------------------- */
+    while(pl!=NULL)
+    {
+        plant=pl;
+        pl=pl->prox;
+    }
+
+    pl=malloc(sizeof(t_lft));
+
+    aux[0]=x[0];
+    pl->ei=atoi(aux);
+    pl->le=x[1];
+    aux[0]=x[2];
+    pl->ef=atoi(aux);
+    pl->flag = -1;
+
+    pl->prox=NULL;
+
+    if(plant!=NULL)
+        plant->prox=pl;
+    else
+        *cabeca=pl;
+}
+* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
 
 /* ---------------------------------------------------------------------- */
