@@ -528,7 +528,6 @@ void  imprimir_principal(t_lprinc *cabeca)
     }
     printf("NULL\n");
 }
-
 void  imprimir_listinha(t_ll  *cabeca)
 {
     t_ll *pl=cabeca;
