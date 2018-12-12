@@ -134,7 +134,7 @@ typedef struct st_lef
 typedef struct st_lft
 {
     unsigned short int ei;  /* estado inicial */
-    char *le;               /* le (string com rotulos) */
+    char le;               /* le (string com rotulos) */
     unsigned short int ef;  /* estado final */
     struct st_lft *prox;
 } t_lft;
