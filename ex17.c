@@ -533,6 +533,27 @@ t_ll *buscar_principal(t_lprinc  *cabeca, unsigned short int x)
     return  NULL;
 }
 
+void limpar(t_lft **lista)//Remove todos os nM-CM-3s da Lista
+{
+    t_lft *p;
+
+    if(*lista == NULL)
+    {
+        printf("\nLista Vazia\n");
+    }
+    else
+    {
+        while(*lista!=NULL)
+        {
+            p = *lista;
+            *lista = (*lista)->prox;
+            free(p);
+        }
+    }
+
+    return;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
