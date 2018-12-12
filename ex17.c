@@ -493,6 +493,33 @@ int tamanho(t_ll *x)
     return cont;
 }
 
+bool compara_listas(t_ll *a,t_ll *b)
+{
+    int c;
+    t_ll *auxb=b;
+
+    if(tamanho(a)!=tamanho(b))
+        return false;
+
+    while (a != NULL)
+    {
+        b=auxb;
+        c=0;
+        while (b != NULL)
+        {
+            if (a->fi == b->fi)
+                c++;
+
+            b = b->prox;
+        }
+        a = a->prox;
+        if(c!=1)
+            return false;
+    }
+
+    return (a == NULL && b == NULL && c==1);
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
