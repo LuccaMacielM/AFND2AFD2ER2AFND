@@ -311,7 +311,7 @@ void ex11(void)
             inserir_estados_finais(&q.F,atoi(auxestf));
         }
 
-        imprimir_estados(q.F);
+        /* imprimir_estados(q.F); */
         printf("\n");
 
         /* ------------------------------------ CONEXOES -------------------------------------- */
@@ -329,7 +329,7 @@ void ex11(void)
 
         }while(strlen(linha[j]) != 0);
 
-        imprimir_delta(q.D);
+        /* imprimir_delta(q.D); */
     }
 
     gera_nova_quintupla(q,vetor_alf);
@@ -405,16 +405,37 @@ void quebra_vetores(char *a, char *vetor)
 }
 unsigned short int busca_trans(t_lft *cabeca,unsigned short int qinic,char alfb)
 {
-        t_lft *pl=cabeca;
+    t_lft *pl=cabeca;
 
-            while(pl!=NULL)
-                    {
-                                if(pl->ei==qinic && pl->le==alfb)
-                                                return pl->ef;
-                                        pl=pl->prox;
-                                            }
+    while(pl!=NULL)
+    {
+        if(pl->ei==qinic && pl->le==alfb)
+            return pl->ef;
+        pl=pl->prox;
+    }
 
-                return -1;
+    return -1;
+}
+void inserir_na_listinha(t_ll **cabeca, unsigned short int fin)
+{
+    t_ll  *pl=*cabeca;
+    t_ll  *plant=NULL;
+
+    while(pl!=NULL)
+    {
+        plant=pl;
+        pl=pl->prox;
+    }
+
+    pl=malloc(sizeof(t_ll));
+
+    pl->fi=fin;
+    pl->prox=NULL;
+
+    if(plant!=NULL)
+        plant->prox=pl;
+    else
+        *cabeca=pl;
 }
 
 /* ---------------------------------------------------------------------- */
