@@ -387,22 +387,34 @@ void inserir_estados_finais(t_lef **cabeca,unsigned short int ini)
 }
 void quebra_vetores(char *a, char *vetor)
 {
-        unsigned i=0;
-            char *aux_geral;
-                char aux_a[SBUFF];
+    unsigned i=0;
+    char *aux_geral;
+    char aux_a[SBUFF];
 
-                    aux_geral = strtok(a," ");
-                        strcpy(aux_a,aux_geral);
+    aux_geral = strtok(a," ");
+    strcpy(aux_a,aux_geral);
 
-                            while(aux_geral!= NULL)
-                                    {
-                                                if(aux_geral != NULL)
-                                                                strcpy(aux_a,aux_geral);
-                                                        vetor[i]=aux_a[0];
-                                                                aux_geral = strtok(NULL," ");
-                                                                        i++;
-                                                                            }
+    while(aux_geral!= NULL)
+    {
+        if(aux_geral != NULL)
+            strcpy(aux_a,aux_geral);
+        vetor[i]=aux_a[0];
+        aux_geral = strtok(NULL," ");
+        i++;
+    }
 }
+void  imprimir_listinha(t_ll  *cabeca)
+{
+    t_ll *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        printf("%u->",pl->fi);
+        pl=pl->prox;
+    }
+    printf("NULL\n");
+}
+
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
 
