@@ -621,6 +621,19 @@ t_lprinc *acha_simultaneos(t_lft *cabeca,unsigned short int nes)
     return sm;
 }
 
+void  imprimir_delta(t_lft  *cabeca)
+{
+    t_lft *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        printf("%u->%c->%u\n",pl->ei,pl->le,pl->ef);
+        pl=pl->prox;
+    }
+
+    printf("NULL\n");
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
