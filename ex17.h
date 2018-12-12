@@ -148,11 +148,15 @@ typedef struct st_quintupla
     t_lef *F;               /* lista de estados finais */
     t_lft *D;               /* lista da funcao de transicao d(ei, le, ef) */
 } t_quintupla;
+
+
 typedef struct st_ll
 {
     unsigned short int fi;
     struct st_ll *prox;
 } t_ll;
+
+
 typedef struct st_lprinc
 {
     t_ll *simul;
