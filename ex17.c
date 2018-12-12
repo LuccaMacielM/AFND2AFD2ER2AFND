@@ -437,6 +437,37 @@ void inserir_na_listinha(t_ll **cabeca, unsigned short int fin)
     else
         *cabeca=pl;
 }
+void inserir_na_principal(t_lprinc **cabeca, unsigned short int fin, t_ll *lista)
+{
+    t_lprinc  *pl=*cabeca;
+    t_lprinc  *plant=NULL;
+    t_ll *listinha=lista;
+
+    while(pl!=NULL)
+    {
+        plant=pl;
+        pl=pl->prox;
+    }
+
+    pl=malloc(sizeof(t_lprinc));
+
+    pl->indice=fin;
+    pl->simul=NULL;
+    while(listinha!=NULL)
+    {
+        /* printf("(%u)",listinha->fi); */
+        inserir_na_listinha(&pl->simul,listinha->fi);
+        listinha=listinha->prox;
+    }
+
+    pl->prox=NULL;
+
+    if(plant!=NULL)
+        plant->prox=pl;
+    else
+        *cabeca=pl;
+}
+
 
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
