@@ -150,14 +150,14 @@ typedef struct st_quintupla
 } t_quintupla;
 typedef struct st_ll
 {
-        unsigned short int fi;
-            struct st_ll *prox;
+    unsigned short int fi;
+    struct st_ll *prox;
 } t_ll;
 typedef struct st_lprinc
 {
-        t_ll *simul;
-            struct st_lprinc *prox;
-                unsigned short int indice;
+    t_ll *simul;
+    struct st_lprinc *prox;
+    unsigned short int indice;
 } t_lprinc;
 
 /* ---------------------------------------------------------------------- */
