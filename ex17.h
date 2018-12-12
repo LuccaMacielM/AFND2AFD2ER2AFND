@@ -58,6 +58,13 @@
  *
  */
 
+<<<<<<< HEAD
+=======
+#ifndef _EX17_H
+#define _EX17_H
+#endif
+
+>>>>>>> develop
 /* ---------------------------------------------------------------------- */
 /* definitions */
 
@@ -83,7 +90,6 @@
 /* ---------------------------------------------------------------------- */
 /* globals */
 
-static int verb = 0; /**< verbose level, global within the file */
 
 /* ---------------------------------------------------------------------- */
 /* tipo lista encadeada simples dos estados finais */
@@ -136,11 +142,14 @@ void ex17_init(void);  /**< Initializes some operations before start */
 void ex17_update(void); /**< Updates values during program cycle */
 void ex11(void);
 void inserir_delta(t_lft **cabeca, char *x);
-void inserir_estados_finais(t_lef **cabeca,unsigned short int ini;
+void inserir_estados_finais(t_lef **cabeca,unsigned short int ini);
 void quebra_vetores(char *a, char *vetor);
 unsigned short int busca_trans(t_lft *cabeca,unsigned short int qinic,char alfb);
 void inserir_na_listinha(t_ll **cabeca, unsigned short int fin);
 void inserir_na_principal(t_lprinc **cabeca, unsigned short int fin, t_ll *lista);
+/* une todo o conteudo da lista a cabeca sem repetir */
+void uniao_simultaneos(t_ll **cabeca, t_ll *lista);
+void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned short int f);
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
 /* Template by Dr. Beco <rcb at beco dot cc> Version 20160615.020326      */

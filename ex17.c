@@ -122,6 +122,42 @@
 /* #include "libeco.h" */ /* I/O, Math, Sound, Color, Portable Linux/Windows */
 
 /* ---------------------------------------------------------------------- */
+/* definitions */
+
+#ifndef VERSION /* gcc -DVERSION="0.1.160612.142628" */
+#define VERSION "20181202.204804" /**< Version Number (string) */
+#endif
+
+/* Debug */
+#ifndef DEBUG /* gcc -DDEBUG=1 */
+#define DEBUG 0 /**< Activate/deactivate debug mode */
+#endif
+
+#if DEBUG==0
+#define NDEBUG
+#endif
+/* #include <assert.h> */ /* Verify assumptions with assert. Turn off with #define NDEBUG */ 
+
+/** @brief Debug message if DEBUG on */
+#define IFDEBUG(M) if(DEBUG) fprintf(stderr, "[DEBUG file:%s line:%d]: " M "\n", __FILE__, __LINE__); else {;}
+
+/* limits */
+#define SBUFF 256 /**< String buffer */
+
+/* ---------------------------------------------------------------------- */
+/* globals */
+
+static int verb = 0; /*< verbose level, global within the file */
+
+/* ---------------------------------------------------------------------- */
+/* prototypes */
+
+void help(void); /* print some help */
+void copyr(void); /* print version and copyright information */
+void ex17_init(void); /* global initialization function */
+>>>>>>> develop
+
+/* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
  * @brief This is the main event of the evening
@@ -436,6 +472,43 @@ void inserir_na_principal(t_lprinc **cabeca, unsigned short int fin, t_ll *lista
         inserir_na_listinha(&pl->simul,listinha->fi);
         listinha=listinha->prox;
     }
+
+    pl->prox=NULL;
+
+    if(plant!=NULL)
+        plant->prox=pl;
+    else
+        *cabeca=pl;
+}
+void uniao_simultaneos(t_ll **cabeca, t_ll *lista)
+{
+    t_ll *ax=NULL;
+    t_ll *listinha=lista;
+
+    while(listinha!=NULL)
+    {
+        ax=buscar(*cabeca, listinha->fi);
+        if(ax==NULL)
+            inserir_na_listinha(cabeca,listinha->fi);
+        listinha=listinha->prox;
+    }
+}
+void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned short int f)
+{
+    t_lft  *pl=*cabeca;
+    t_lft  *plant=NULL;
+
+    while(pl!=NULL)
+    {
+        plant=pl;
+        pl=pl->prox;
+    }
+
+    pl=malloc(sizeof(t_lft));
+
+    pl->ei=i;
+    pl->le=a;
+    pl->ef=f;
 
     pl->prox=NULL;
 
