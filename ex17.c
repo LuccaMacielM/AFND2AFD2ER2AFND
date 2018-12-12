@@ -155,7 +155,6 @@ static int verb = 0; /*< verbose level, global within the file */
 void help(void); /* print some help */
 void copyr(void); /* print version and copyright information */
 void ex17_init(void); /* global initialization function */
->>>>>>> develop
 
 /* ---------------------------------------------------------------------- */
 /**
