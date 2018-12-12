@@ -253,6 +253,89 @@ int main(int argc, char *argv[])
 
 /* ---------------------------------------------------------------------- */
 /* ex11 - AFND to AFD */
+void ex11(void)
+{
+    unsigned i;
+    char alfabeto[27]={"abcdefghijklmnopqrstuvwxyz"},vetor_alf[SBUFF]={0}; /*vetores para receber entradas especificas*/
+    FILE *file = fopen("01-entrada-AFND.txt","r");
+    char linha[SBUFF][10]={0}, vetor_estf[SBUFF],auxestf[SBUFF],vetor_con[SBUFF],nest[SBUFF],esti[SBUFF],estf[SBUFF],conexoes[SBUFF];
+    int p , j, e, opt, a = 0, normal=0;
+    t_quintupla q;
+    opterr =0;
+
+    q.F=NULL;
+    q.D=NULL;
+
+    normal=1;
+    if(verb)
+        printf("Verbose level set at: %d\n", verb);
+
+    printf("-------------QUINTUPLA-AFND--------------\n\n");
+
+    if(normal == 1)
+    {
+        if(file == NULL)
+        {
+            printf("Erro ao abrir o arquivo\n");
+            exit(1);
+        }
+
+        while(fgets(linha[a], 10, file) != NULL) /*laca que atrbui cada linha a um vetor de strings*/
+            a++;
+
+        /* ------------------------------------ N ESTADOS -------------------------------------- */
+        q.K=atoi(linha[1]);
+        printf("K = %u \n\n",q.K);
+
+        /* ------------------------------------ ALFABETO -------------------------------------- */
+        q.A=linha[3][0];
+
+        for(j=0;j<SBUFF;j++)
+        {
+            vetor_alf[j]=alfabeto[j];
+            if(q.A==alfabeto[j])
+                break;
+        }
+        printf("A = %c \n\n",q.A);
+        /* ------------------------------------ ESTADO INICIAL -------------------------------------- */
+        q.S=atoi(linha[5]);
+        printf("S = %u \n\n",q.S);
+
+        /* ------------------------------------ ESTADOS FINAIS -------------------------------------- */
+        memset(vetor_estf, 0, SBUFF);
+        quebra_vetores(linha[7],vetor_estf);
+
+        for(i=0;i<strlen(vetor_estf);i++)
+        {
+            auxestf[0]=vetor_estf[i];
+            inserir_estados_finais(&q.F,atoi(auxestf));
+        }
+
+        imprimir_estados(q.F);
+        printf("\n");
+
+        /* ------------------------------------ CONEXOES -------------------------------------- */
+        j=10;
+        p=-1;
+
+        do
+        {
+            quebra_vetores(linha[j],vetor_con);
+
+            inserir_delta(&q.D,vetor_con);
+
+            j++;
+            p++;
+
+        }while(strlen(linha[j]) != 0);
+
+        imprimir_delta(q.D);
+    }
+
+    gera_nova_quintupla(q,vetor_alf);
+
+    return ;
+}
 
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
