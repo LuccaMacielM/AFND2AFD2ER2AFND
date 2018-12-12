@@ -92,7 +92,7 @@
 #include <stdlib.h> /* Miscellaneous functions (rand, malloc, srand)*/
 #include <getopt.h> /* get options from system argc/argv */
 #include <string.h> /* Strings functions definitions */
-#include "ex17.h"  /* To be created for this template if needed */
+#include "ex17.h" /* To be created for this template if needed */
 
 /* To include assert.h for diagnostics, do it after #define DEBUG bellow */
 /* #include <time.h> */ /* Time and date functions */
@@ -120,34 +120,6 @@
 /* #include <allegro.h> */ /* A game library for graphics, sounds, etc. */
 /* #include <SWI-Prolog.h> */ /* Prolog integration with C */
 /* #include "libeco.h" */ /* I/O, Math, Sound, Color, Portable Linux/Windows */
-
-/* ---------------------------------------------------------------------- */
-/* definitions */
-
-#ifndef VERSION /* gcc -DVERSION="0.1.160612.142628" */
-#define VERSION "20181202.204804" /**< Version Number (string) */
-#endif
-
-/* Debug */
-#ifndef DEBUG /* gcc -DDEBUG=1 */
-#define DEBUG 0 /**< Activate/deactivate debug mode */
-#endif
-
-#if DEBUG==0
-#define NDEBUG
-#endif
-/* #include <assert.h> */ /* Verify assumptions with assert. Turn off with #define NDEBUG */ 
-
-/** @brief Debug message if DEBUG on */
-#define IFDEBUG(M) if(DEBUG) fprintf(stderr, "[DEBUG file:%s line:%d]: " M "\n", __FILE__, __LINE__); else {;}
-
-/* limits */
-#define SBUFF 256 /**< String buffer */
-
-/* ---------------------------------------------------------------------- */
-/* globals */
-
-static int verb = 0; /**< verbose level, global within the file */
 
 /* ---------------------------------------------------------------------- */
 /**

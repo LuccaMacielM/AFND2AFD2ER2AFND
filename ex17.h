@@ -58,42 +58,6 @@
  *
  */
 
-#ifndef _EX17_H
-#define _EX17_H
-
-/* ---------------------------------------------------------------------- */
-/* includes */
-
-/* #include <stdio.h> */ /* Standard I/O functions */
-/* #include <stdlib.h> */ /* Miscellaneous functions (rand, malloc, srand)*/
-/* #include <getopt.h> */ /* get options from system argc/argv */
-
-/* #include <time.h> */ /* Time and date functions */
-/* #include <math.h> */ /* Mathematics functions */
-/* #include <string.h> */ /* Strings functions definitions */
-/* #include <dlfcn.h> */ /* Dynamic library */
-/* #include <malloc.h> */ /* Dynamic memory allocation */
-/* #include <unistd.h> */ /* UNIX standard function */
-/* #include <limits.h> */ /* Various C limits */
-/* #include <ctype.h> */ /* Character functions */
-/* #include <errno.h> */ /* Error number codes errno */
-/* #include <signal.h> */ /* Signal processing */
-/* #include <stdarg.h> */ /* Functions with variable arguments */
-/* #include <pthread.h> */ /* Parallel programming with threads */
-/* #include <fcntl.h> */ /* File control definitions */
-/* #include <termios.h> */ /* Terminal I/O definitions POSIX */
-/* #include <sys/stat.h> */ /* File status and information */
-/* #include <float.h> */ /* Float constants to help portability */
-/* #include <setjmp.h> */ /* Bypass standard function calls and return */
-/* #include <stddef.h> */ /* Various types and MACROS */
-/* #include <SWI-Prolog.h> */ /* Prolog integration with C */
-/* #include <ncurses.h> */ /* Screen handling and optimisation functions */
-/* #include <allegro.h> */ /* A game library for graphics, sounds, etc. */
-/* #include <libintl.h> */ /* Internationalization / translation */
-/* #include <locale.h> */ /* MACROS LC_ for location specific settings */
-/* #include "libeco.h" */ /* I/O, Math, Sound, Color, Portable Linux/Windows */
-/* #include "ex17.h" */ /* To be created for this template if needed */
-
 /* ---------------------------------------------------------------------- */
 /* definitions */
 
@@ -109,7 +73,6 @@
 #if DEBUG==0
 #define NDEBUG
 #endif
-/* #include <assert.h> */ /* Verify assumptions with assert. Turn off with #define NDEBUG */ 
 
 /** @brief Debug message if DEBUG on */
 #define IFDEBUG(M) if(DEBUG) fprintf(stderr, "[DEBUG file:%s line:%d]: " M "\n", __FILE__, __LINE__); else {;}
