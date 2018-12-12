@@ -336,6 +336,8 @@ void ex11(void)
 
     return ;
 }
+
+/* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
     t_lft  *pl=*cabeca;
@@ -364,6 +366,8 @@ void inserir_delta(t_lft **cabeca, char *x)
     else
         *cabeca=pl;
 }
+
+/* ---------------------------------------------------------------------- */
 void inserir_estados_finais(t_lef **cabeca,unsigned short int ini)
 {
     t_lef  *pl=*cabeca;
@@ -385,6 +389,8 @@ void inserir_estados_finais(t_lef **cabeca,unsigned short int ini)
     else
         *cabeca=pl;
 }
+
+/* ---------------------------------------------------------------------- */
 void quebra_vetores(char *a, char *vetor)
 {
     unsigned i=0;
@@ -403,6 +409,8 @@ void quebra_vetores(char *a, char *vetor)
         i++;
     }
 }
+
+/* ---------------------------------------------------------------------- */
 unsigned short int busca_trans(t_lft *cabeca,unsigned short int qinic,char alfb)
 {
     t_lft *pl=cabeca;
@@ -416,6 +424,8 @@ unsigned short int busca_trans(t_lft *cabeca,unsigned short int qinic,char alfb)
 
     return -1;
 }
+
+/* ---------------------------------------------------------------------- */
 void inserir_na_listinha(t_ll **cabeca, unsigned short int fin)
 {
     t_ll  *pl=*cabeca;
@@ -437,6 +447,8 @@ void inserir_na_listinha(t_ll **cabeca, unsigned short int fin)
     else
         *cabeca=pl;
 }
+
+/* ---------------------------------------------------------------------- */
 void inserir_na_principal(t_lprinc **cabeca, unsigned short int fin, t_ll *lista)
 {
     t_lprinc  *pl=*cabeca;
