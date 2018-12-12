@@ -566,6 +566,19 @@ void  imprimir_estados(t_lef *cabeca)
     printf("NULL\n");
 }
 
+t_ll *buscar(t_ll  *cabeca, unsigned short int x)
+{
+    t_ll  *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        if(pl->fi==x)
+            return  pl;
+        pl=pl->prox;
+    }
+    return  NULL;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
