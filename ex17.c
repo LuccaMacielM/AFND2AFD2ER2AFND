@@ -337,6 +337,73 @@ void ex11(void)
     return ;
 }
 
+void gera_nova_quintupla(t_quintupla  q , char *vet_alf)
+{
+    t_lprinc *lista_simultaneos=NULL, *lista_nova=NULL, *aux_nova=NULL;;
+    t_ll *p0 = NULL;
+    t_lft *novas_transicoes = NULL;
+    unsigned short int i=0,j=0,k=0;
+    int indice;
+
+    /* os simultaneos do estado inicial sao adicionados a nova lista porque ele sempre sera o P0 da nova quintupla */
+    lista_simultaneos=acha_simultaneos(q.D,q.K);
+    p0 = buscar_principal(lista_simultaneos,q.S);
+    inserir_na_principal(&lista_nova,i,p0);
+    inserir_na_principal(&aux_nova,i,p0);
+    aux_nova=lista_nova;
+
+    while(lista_nova!=NULL)
+    {
+        for(k=0;k<strlen(vet_alf);k++)
+        {
+            /* se a minha gera estado retornar um novo estado igual a qualquer um da na nova lista, ele nao eh inserido, apenas a transicao*/
+            if(ja_faz_parte(aux_nova,gera_estado(q.D,lista_nova->simul,vet_alf[k],lista_simultaneos)))
+            {
+                indice=buscar_indice(aux_nova,gera_estado(q.D,lista_nova->simul,vet_alf[k],lista_simultaneos));
+                inserir_outro_delta(&novas_transicoes,i,vet_alf[k],indice);
+            }
+            else
+            {
+                j++;
+
+                if(gera_estado(q.D,lista_nova->simul,vet_alf[k],lista_simultaneos)!=NULL)
+                {
+                    inserir_na_principal(&aux_nova,j,gera_estado(q.D,lista_nova->simul,vet_alf[k],lista_simultaneos));
+                    inserir_outro_delta(&novas_transicoes,i,vet_alf[k],j);
+                }
+                else
+                    j--;
+            }
+        }
+        i++;
+        lista_nova=lista_nova->prox;
+    }
+
+    printf("-------------QUINTUPLA-AFD--------------\n\n");
+
+    printf("ALFABETO:\n");
+    for(k=0;k<strlen(vet_alf);k++)
+        printf("-%c\n",vet_alf[k]);
+    printf("\n");
+
+    printf("ESTADO INICIAL: P0\n\n");
+
+    printf("NOVOS ESTADOS: \n");
+    imprimir_principal(aux_nova);
+    printf("\n");
+
+    printf("NOVAS TRANSICOES: \n");
+    imprimir_delta(novas_transicoes);
+    printf("\n");
+
+    printf("ESTADOS FINAIS: \n");
+    imprimir_novos_finais(aux_nova,q.F);
+
+    printf("---------------------------------------\n\n");
+
+    return;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
