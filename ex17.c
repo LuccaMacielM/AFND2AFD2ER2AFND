@@ -403,16 +403,18 @@ void quebra_vetores(char *a, char *vetor)
         i++;
     }
 }
-void  imprimir_listinha(t_ll  *cabeca)
+unsigned short int busca_trans(t_lft *cabeca,unsigned short int qinic,char alfb)
 {
-    t_ll *pl=cabeca;
+        t_lft *pl=cabeca;
 
-    while(pl!=NULL)
-    {
-        printf("%u->",pl->fi);
-        pl=pl->prox;
-    }
-    printf("NULL\n");
+            while(pl!=NULL)
+                    {
+                                if(pl->ei==qinic && pl->le==alfb)
+                                                return pl->ef;
+                                        pl=pl->prox;
+                                            }
+
+                return -1;
 }
 
 /* ---------------------------------------------------------------------- */
