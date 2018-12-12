@@ -467,6 +467,18 @@ t_ll *gera_estado(t_lft *deltas,t_ll *estado ,char letra,t_lprinc *simultaneos)
     return est_novo;
 }
 
+/* ve se uma listinha eh identica a alguma lista da principal */
+bool ja_faz_parte(t_lprinc *a,t_ll *b)
+{
+    while(a!=NULL)
+    {
+        if(compara_listas(a->simul, b))
+            return true;
+        a=a->prox;
+    }
+    return false;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
