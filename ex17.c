@@ -520,6 +520,19 @@ bool compara_listas(t_ll *a,t_ll *b)
     return (a == NULL && b == NULL && c==1);
 }
 
+t_ll *buscar_principal(t_lprinc  *cabeca, unsigned short int x)
+{
+    t_lprinc  *pl=cabeca;
+
+    while(pl!=NULL)
+    {
+        if(pl->indice==x)
+            return  pl->simul;
+        pl=pl->prox;
+    }
+    return  NULL;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
