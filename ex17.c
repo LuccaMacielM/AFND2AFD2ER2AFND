@@ -404,6 +404,18 @@ void gera_nova_quintupla(t_quintupla  q , char *vet_alf)
     return;
 }
 
+/* funcao que identifica qual lista (dentro da principal - t_lprinc  *a) eh igual a uma lista qualquer (t_ll *b)*/
+int buscar_indice(t_lprinc  *a, t_ll *b)
+{
+    while(a!=NULL)
+    {
+        if(compara_listas(a->simul, b))
+            return a->indice;
+        a=a->prox;
+    }
+    return -1;
+}
+
 /* ---------------------------------------------------------------------- */
 void inserir_delta(t_lft **cabeca, char *x)
 {
