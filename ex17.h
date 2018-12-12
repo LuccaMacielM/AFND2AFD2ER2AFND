@@ -133,6 +133,19 @@ typedef struct st_lprinc
 /* ---------------------------------------------------------------------- */
 /* prototypes */
 
+int buscar_indice(t_lprinc  *a, t_ll *b);
+void gera_nova_quintupla(t_quintupla q,char *vet_alf);
+void imprimir_novos_finais(t_lprinc  *cabeca, t_lef *x);
+t_ll *gera_estado(t_lft *deltas,t_ll *estado ,char letra,t_lprinc *simultaneos);
+bool ja_faz_parte(t_lprinc *a,t_ll *b);
+int tamanho(t_ll *x);
+bool compara_listas(t_ll *a,t_ll *b);
+t_ll *buscar_principal(t_lprinc  *cabeca, unsigned short int x);
+void imprimir_estados(t_lef  *cabeca);
+void limpar(t_lft **lista);//Remove todos os nM-CM-3s da Lista
+t_ll *buscar(t_ll  *cabeca, unsigned short int x);
+t_lprinc *acha_simultaneos(t_lft *cabeca,unsigned short int nes);
+void imprimir_delta(t_lft  *cabeca);
 void help(void); /**< Prints help information and exit */
 void copyr(void); /**< Prints copyright information and exit */
 void ex17_init(void);  /**< Initializes some operations before start */
