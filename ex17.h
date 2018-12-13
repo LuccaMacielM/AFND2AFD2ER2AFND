@@ -58,6 +58,8 @@
  *
  */
 
+#include <stdbool.h>
+
 #ifndef _EX17_H
 #define _EX17_H
 #endif
