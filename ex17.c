@@ -848,6 +848,19 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 {
     FILE *file;
     file = fopen("saida11.txt", "w");
+
+    fprintf(file, "#K\n");
+    t_lft *pa = cabeca;
+    int maior = 0;
+    while(pa != NULL)
+    {
+        if(pa->ei > maior)
+            maior = pa->ei;
+        if(pa->ef > maior)
+            maior = pa->ef;
+        pa=pa->prox;
+    }
+    fprintf(file, "%i\n", maior);
 }
 
 
