@@ -936,357 +936,542 @@ void pegaEntrada (quint_t *q, FILE *arq)
    
 void encurtaEstadoKleene (quint_t *q, int e)
 {
-  delta_t *cont = q->d;
-  delta_t *head = NULL;
-  delta_t *aux = NULL;
-  delta_t *busc = NULL;
-  char kleene[SBUFF];
-  char vet[SBUFF];
+    delta_t *cont = q->d;
+    delta_t *head = NULL;
+    delta_t *aux = NULL;
+    delta_t *busc = NULL;
+    char kleene[SBUFF];
+    char vet[SBUFF];
 
-  while(cont != NULL)
-  {
-    if(cont->ei == e && cont->ef == e)
-      insereComVetorNaFuncaoDelta(&head, cont->ei, cont->s, cont->ef);
-    cont = cont->prox;
-  }
-  if(head == NULL)
-    return;
-  aux = head;
-  cont = q->d;
-
-  while(aux != NULL)
-  {
     while(cont != NULL)
     {
-      if(cont->ei == e && cont->ef != e)
-      {
-        montaKleene(aux->s, kleene);
-        printf("\nkleene: %s\n", kleene);
-        montaTransicao(kleene, cont->s, vet);
-        printf("\nTransicao: %s\n", vet);
-        busc = buscaDelta(q->d, aux->ei, aux->ef, aux->s);
-        if(busc != NULL)
-          removerDelta(&q->d, busc);
-        busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
-        if(busc != NULL)
-          removerDelta(&q->d, busc);
-        insereComVetorNaFuncaoDelta(&q->d, e, vet, cont->ef);
-      }
-      cont = cont->prox;
+        if(cont->ei == e && cont->ef == e)
+            insereComVetorNaFuncaoDelta(&head, cont->ei, cont->s, cont->ef);
+        cont = cont->prox;
     }
+    if(head == NULL)
+        return;
+    aux = head;
     cont = q->d;
-    aux = aux->prox;
-  }
 
-  return;
+    while(aux != NULL)
+    {
+        while(cont != NULL)
+        {
+            if(cont->ei == e && cont->ef != e)
+            {
+                montaKleene(aux->s, kleene);
+                printf("\nkleene: %s\n", kleene);
+                montaTransicao(kleene, cont->s, vet);
+                printf("\nTransicao: %s\n", vet);
+                busc = buscaDelta(q->d, aux->ei, aux->ef, aux->s);
+                if(busc != NULL)
+                    removerDelta(&q->d, busc);
+                busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
+                if(busc != NULL)
+                    removerDelta(&q->d, busc);
+                insereComVetorNaFuncaoDelta(&q->d, e, vet, cont->ef);
+            }
+            cont = cont->prox;
+        }
+        cont = q->d;
+        aux = aux->prox;
+    }
+
+    return;
 }
 
 void encurtaEstadoE (quint_t *q, int e)
 {
-  delta_t *qfinal = NULL;
-  delta_t *qinicial = NULL;
-  delta_t *cont = q->d;
-  delta_t *qicont = NULL;
-  delta_t *qfcont = NULL;
-  delta_t *busc = NULL;
-  char vet[SBUFF];
-  int i;
- /* char kleene[SBUFF]; */
+    delta_t *qfinal = NULL;
+    delta_t *qinicial = NULL;
+    delta_t *cont = q->d;
+    delta_t *qicont = NULL;
+    delta_t *qfcont = NULL;
+    delta_t *busc = NULL;
+    char vet[SBUFF];
+    int i;
+    /* char kleene[SBUFF]; */
 
-  /* cria duas funcoes delta: */
-  /*uma com as transicoes que tem o estado a se apagar como estado final */
-  /*e uma com as transicoes que tem o estado a se apagar como estado inicial */
-  while(cont != NULL)
-  {
-    if(cont->ef == e)
-      insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
-    if(cont->ei == e)
-      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
-    cont = cont->prox;
-  }
-  if(qinicial->prox != NULL)
-  {
-    printf("\noutro inicial: ei = %d\n", qinicial->prox->ei);
-    encurtaEstadoE(q, qinicial->prox->ei);
-    return;
-  }
-
-  qicont = qinicial;
-  qfcont = qfinal;
-
-  printf("\nDEBUG\n\n");
-  printf("qicont\n");
-  imprimeFuncaoDelta(qicont);
-  printf("\nqfcont\n");
-  imprimeFuncaoDelta(qfcont);
-
-  while(qicont != NULL)
-  {
-    while(qfcont != NULL)
+    /* cria duas funcoes delta: */
+    /*uma com as transicoes que tem o estado a se apagar como estado final */
+    /*e uma com as transicoes que tem o estado a se apagar como estado inicial */
+    while(cont != NULL)
     {
-      for(i = 0; i < SBUFF; i++)
-        vet[i] = 0;
-      /*if(qfcont->ei == qfcont->ef)
-      {
-        montaKleene(qfcont->s, kleene);
-        busc = buscaTransicaoCabecaKleene(qfinal, qfcont->ei);
-        montaTransicaoKleene(qfcont, kleene, vet);
-        printf("\nTransicao criada: %s\n", vet);
-        novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
-        printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-      } */
-      /*else
-      { */
-      montaTransicao(qicont->s, qfcont->s, vet);
-      printf("\ntranseicao criada: %s\n", vet);
-      novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
-      printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-      /*} */
-      qfcont = qfcont->prox;
+        if(cont->ef == e)
+            insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
+        if(cont->ei == e)
+            insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
+        cont = cont->prox;
     }
+    if(qinicial->prox != NULL)
+    {
+        printf("\noutro inicial: ei = %d\n", qinicial->prox->ei);
+        encurtaEstadoE(q, qinicial->prox->ei);
+        return;
+    }
+
+    qicont = qinicial;
     qfcont = qfinal;
-    while(qfcont != NULL)
-    {
-      busc = buscaDelta(q->d, qfcont->ei, qfcont->ef, qfcont->s);
-      if(busc != NULL)
-        removerDelta(&q->d, busc);
-      qfcont = qfcont->prox;
-    }
-    
-    qicont = qicont->prox;
-  }
-  qicont = qinicial;
-  while(qicont != NULL)
-  {
-    busc = buscaDelta(q->d, qicont->ei, qicont->ef, qicont->s);
-    if(busc != NULL)
-      removerDelta(&q->d, busc);
-    qicont = qicont->prox;
-  }
 
-  
-  return;
+    printf("\nDEBUG\n\n");
+    printf("qicont\n");
+    imprimeFuncaoDelta(qicont);
+    printf("\nqfcont\n");
+    imprimeFuncaoDelta(qfcont);
+
+    while(qicont != NULL)
+    {
+        while(qfcont != NULL)
+        {
+            for(i = 0; i < SBUFF; i++)
+                vet[i] = 0;
+            /*if(qfcont->ei == qfcont->ef)
+              {
+              montaKleene(qfcont->s, kleene);
+              busc = buscaTransicaoCabecaKleene(qfinal, qfcont->ei);
+              montaTransicaoKleene(qfcont, kleene, vet);
+              printf("\nTransicao criada: %s\n", vet);
+              novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+              printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
+              } */
+            /*else
+              { */
+            montaTransicao(qicont->s, qfcont->s, vet);
+            printf("\ntranseicao criada: %s\n", vet);
+            novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+            printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
+            /*} */
+            qfcont = qfcont->prox;
+        }
+        qfcont = qfinal;
+        while(qfcont != NULL)
+        {
+            busc = buscaDelta(q->d, qfcont->ei, qfcont->ef, qfcont->s);
+            if(busc != NULL)
+                removerDelta(&q->d, busc);
+            qfcont = qfcont->prox;
+        }
+
+        qicont = qicont->prox;
+    }
+    qicont = qinicial;
+    while(qicont != NULL)
+    {
+        busc = buscaDelta(q->d, qicont->ei, qicont->ef, qicont->s);
+        if(busc != NULL)
+            removerDelta(&q->d, busc);
+        qicont = qicont->prox;
+    }
+
+
+    return;
 }
- 
+
 void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
 {
-  delta_t *cont = *d;
-  delta_t *ant = NULL;
+    delta_t *cont = *d;
+    delta_t *ant = NULL;
 
-  while(cont != NULL)
-  {
-    ant = cont;
-    cont = cont->prox;
-  }
+    while(cont != NULL)
+    {
+        ant = cont;
+        cont = cont->prox;
+    }
 
-  cont = malloc(sizeof(delta_t));
-  cont->prox = NULL;
-  cont->ei = ei;
-  strcpy(cont->s, vet);
-  cont->ef = ef;
+    cont = malloc(sizeof(delta_t));
+    cont->prox = NULL;
+    cont->ei = ei;
+    strcpy(cont->s, vet);
+    cont->ef = ef;
 
-  if(ant != NULL)
-    ant->prox = cont;
-  else
-    *d = cont;
+    if(ant != NULL)
+        ant->prox = cont;
+    else
+        *d = cont;
 
-  return;
+    return;
 }
 
 void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
 {
-  delta_t *cont = *d;;
-  delta_t *ant = NULL;
-  int i;
+    delta_t *cont = *d;;
+    delta_t *ant = NULL;
+    int i;
 
-  while(cont != NULL)
-  {
-    ant = cont;
-    cont = cont->prox;
-  }
-  cont = malloc(sizeof(delta_t));
-  cont->prox = NULL;
+    while(cont != NULL)
+    {
+        ant = cont;
+        cont = cont->prox;
+    }
+    cont = malloc(sizeof(delta_t));
+    cont->prox = NULL;
 
-  cont->ei = ei;
-  i = finalDoVetor(cont->s);
-  cont->s[i] = c;
-  cont->ef = ef;
+    cont->ei = ei;
+    i = finalDoVetor(cont->s);
+    cont->s[i] = c;
+    cont->ef = ef;
 
-  if(ant != NULL)
-    ant->prox = cont;
-  else
-    *d = cont;
+    if(ant != NULL)
+        ant->prox = cont;
+    else
+        *d = cont;
 
-  return;
+    return;
 }
 
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
 {
-  delta_t *cont = *d;;
-  delta_t *ant = NULL;
+    delta_t *cont = *d;;
+    delta_t *ant = NULL;
 
-  while(cont != NULL)
-  {
-    ant = cont;
-    cont = cont->prox;
-  }
-  cont = malloc(sizeof(delta_t));
-  cont->prox = NULL;
+    while(cont != NULL)
+    {
+        ant = cont;
+        cont = cont->prox;
+    }
+    cont = malloc(sizeof(delta_t));
+    cont->prox = NULL;
 
-  cont->ei = ei;
-  strcpy(cont->s, s);
-  cont->ef = ef;
+    cont->ei = ei;
+    strcpy(cont->s, s);
+    cont->ef = ef;
 
-  if(ant != NULL)
-    ant->prox = cont;
-  else
-    *d = cont;
+    if(ant != NULL)
+        ant->prox = cont;
+    else
+        *d = cont;
 
-  return;
+    return;
 }
 
 void insereNosEstadosFinais (ef_t **p, int f)
 {
-  ef_t *cont = *p;;
-  ef_t *ant = NULL;
+    ef_t *cont = *p;;
+    ef_t *ant = NULL;
 
-  while(cont != NULL)
-  {
-    ant = cont;
-    cont = cont->prox;
-  }
-  cont = malloc(sizeof(ef_t));
-  cont->prox = NULL;
+    while(cont != NULL)
+    {
+        ant = cont;
+        cont = cont->prox;
+    }
+    cont = malloc(sizeof(ef_t));
+    cont->prox = NULL;
 
-  cont->f = f;
+    cont->f = f;
 
-  if(ant != NULL)
-    ant->prox = cont;
-  else
-    *p = cont;
+    if(ant != NULL)
+        ant->prox = cont;
+    else
+        *p = cont;
 
-  return;
+    return;
 }
 
 void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 {
-  char vetor[SBUFF];
-  int i = 1;
-  int j = 0;
+    char vetor[SBUFF];
+    int i = 1;
+    int j = 0;
 
-  vetor[0] = '(';
-  while(kleene[j] != '\0')
-  {
-    vetor[i+j] = kleene[j];
-    j++;
-  }
-  vetor[i+j] = ')';
-  vetor[i+j+1] = '*';
+    vetor[0] = '(';
+    while(kleene[j] != '\0')
+    {
+        vetor[i+j] = kleene[j];
+        j++;
+    }
+    vetor[i+j] = ')';
+    vetor[i+j+1] = '*';
 
-  strcpy(vet, vetor);
+    strcpy(vet, vetor);
 
-  return;
+    return;
 }
 
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
 {
     char vetor[SBUFF]="\0";
-    
+
     strcat(vetor, sei);
     strcat(vetor, sef);
 
     strcpy(vet, vetor);
-     
+
     printf("vet = %s",vet);
     return;
 }
 
 delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
 {
-  delta_t *cont = head;
+    delta_t *cont = head;
 
-  while(cont != NULL)
-  {
-    if(cont->ei == ei && cont->ef == ef && !strcmp(cont->s, vet))
-      return cont;
-    cont = cont->prox;
-  }
+    while(cont != NULL)
+    {
+        if(cont->ei == ei && cont->ef == ef && !strcmp(cont->s, vet))
+            return cont;
+        cont = cont->prox;
+    }
 
-  return NULL;
+    return NULL;
 }
 
 
 int finalDoVetor (char s[SBUFF])
 {
-  int i = 0;
+    int i = 0;
 
-  while(s[i] != '\0')
-    i++;
+    while(s[i] != '\0')
+        i++;
 
-  return i;
+    return i;
 }
 
 void imprimeQuintupla (quint_t q)
 {
-  printf("QUINTUPLA\n\n");
-  printf("numero de estados = %d\n", q.k);
-  printf("ultima letra do alfabeto = %c\n", q.a);
-  printf("estado inicial = %d\n", q.s0);
-  imprimeListaDeEstadosFinais(q);
-  imprimeFuncaoDelta(q.d);
+    printf("QUINTUPLA\n\n");
+    printf("numero de estados = %d\n", q.k);
+    printf("ultima letra do alfabeto = %c\n", q.a);
+    printf("estado inicial = %d\n", q.s0);
+    imprimeListaDeEstadosFinais(q);
+    imprimeFuncaoDelta(q.d);
 
-  return;
+    return;
 }
 
 void imprimeListaDeEstadosFinais (quint_t q)
 {
-  ef_t *cont = q.f;
+    ef_t *cont = q.f;
 
-  while(cont != NULL)
-  {
-    printf("%d\n", cont->f);
-    cont = cont->prox;
-  }
-  return;
+    while(cont != NULL)
+    {
+        printf("%d\n", cont->f);
+        cont = cont->prox;
+    }
+    return;
 }
 
 void imprimeFuncaoDelta (delta_t *head)
 {
-  delta_t *cont = head;
+    delta_t *cont = head;
 
-  while(cont != NULL)
-  {
-    printf("(%d, %s, %d)\n", cont->ei, cont->s, cont->ef);
-    cont = cont->prox;
-  }
-  return;
+    while(cont != NULL)
+    {
+        printf("(%d, %s, %d)\n", cont->ei, cont->s, cont->ef);
+        cont = cont->prox;
+    }
+    return;
 }
 
 void removerDelta(delta_t **head, delta_t *r) 
 {
-  delta_t *cont = *head;
-  delta_t *plant = NULL;
+    delta_t *cont = *head;
+    delta_t *plant = NULL;
 
-  if(r == NULL)
-    return;
-  while(cont != NULL && cont != r)
-  {
-    plant = cont;
-    cont = cont->prox;
-  }
-  if(cont == NULL) 
-    return;
-  if(plant != NULL) 
-    plant->prox = cont->prox;
-  else 
-    *head = cont->prox;
-  
-  free(cont);
+    if(r == NULL)
+        return;
+    while(cont != NULL && cont != r)
+    {
+        plant = cont;
+        cont = cont->prox;
+    }
+    if(cont == NULL) 
+        return;
+    if(plant != NULL) 
+        plant->prox = cont->prox;
+    else 
+        *head = cont->prox;
 
-  return;
+    free(cont);
+
+    return;
 } 
 /* ---------------------------------------------------------------------- */
 /* ex16 - ER to AFND */
+
+void separar_er(t_lft1 er_comp)
+{
+    t_lft1 aux = er_comp;
+    int i,tam,k,aux1=0,tipo=0;
+    char *token=NULL, *string[SBUFF]={0};
+    unsigned short int est=0;
+    t_quintupla1 *novo_afnd=NULL;
+
+    novo_afnd = criar_quint();
+
+    tam=  strlen(aux.le);
+
+    token = malloc(sizeof(char));
+    for(i=0;i<tam-1;i++)
+    {
+        *token=aux.le[i];
+        token[1]='\0';
+        switch(tipo)
+        {
+            case 0:
+                if(string[aux1]==NULL)
+                {
+                    string[aux1]=(char *)malloc(sizeof(char));
+                    strcpy(string[aux1], token);
+                }
+                else
+                {
+                    if(aux.le[i]=='|')
+                    {
+                        tipo=0;
+                        aux1++;
+                    }
+                    else
+                    {
+                        if(aux.le[i]=='(')
+                            tipo =1;
+                        strcat(string[aux1],token);
+                    }
+                }
+                break;
+            case 1:
+                if(aux.le[i]!='(')
+                {
+                    if(aux.le[i]==')')
+                        tipo=0;
+                    strcat(string[aux1],token);
+                }
+                break;
+        }
+    }
+
+    for(k=0;k<=aux1;k++)
+        montar_trans(string[k] , novo_afnd,&est);/*-1 pq o contador comeca em 1*/
+
+    imprimir_delta(novo_afnd->D);
+
+    return;
+}
+
+t_quintupla1 *criar_quint(void)
+{
+    t_quintupla1 *pl =NULL;
+
+    pl = malloc(sizeof(t_quintupla1));
+
+    pl->D = NULL;
+    pl->F = NULL;
+
+    return pl;
+}
+
+void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim)
+{
+    t_quintupla1 *p_quint = quint;
+    char c = 'E';
+
+    inserir_nodo(&p_quint->D, fim, c, fim+1); /*cria um estado final para o loop*/
+
+    inserir_nodo(&p_quint->D, fim+1, c, inicio+1);/*cria a transicao ultimo---> inicio+1*/
+
+    inserir_nodo(&p_quint->D, inicio, c, fim+1); /*cria a trasnicao inicio --->ultimo fechando o loop*/
+
+    return;
+}
+void montar_afnd(FILE *exp_regular)
+{
+    char ch;
+    int fsize=0;/*qauntidade de caracteres no arquivo*/
+    t_lft1 er_tok={0};
+
+    if(exp_regular == NULL)
+        return;
+
+    while( (ch=fgetc(exp_regular))!= EOF )
+    {
+        fsize++;
+        if(fsize==1)
+        {
+            er_tok.le = (char *)malloc(sizeof(char)*2);
+            er_tok.le[fsize-1]=ch;
+            er_tok.le[fsize]='\0';
+            continue;
+        }
+        er_tok.le = (char *) realloc(er_tok.le,strlen(er_tok.le)+2);
+        er_tok.le[fsize-1]=ch;
+        er_tok.le[fsize]='\0';
+    }
+
+    separar_er(er_tok);
+
+    fclose(exp_regular);
+
+    return;
+}
+void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int *est)
+{
+    unsigned short int cont=0,estinp[SBUFF]={0},cinp=0,estfimp[SBUFF]={0}, cfimp=0,i=0;
+    char v = 'E';
+    t_quintupla1 *p_afnd = novo_afnd;
+
+
+    while(linha[cont] != '\0')
+    {
+        if(linha[cont] != '.' && linha[cont] != '*' && linha[cont] != '\n')
+        {
+            if(cont == 0)
+            {
+                *est+=1;
+                inserir_nodo(&p_afnd->D, 0, v, *est);
+            }
+
+            if(linha[cont+1] == '*')
+                if(linha[cont] == ')')
+                {
+                    inserir_nodo(&p_afnd->D, *est, v, *est+1);
+                    *est+=1;
+                    montar_loop(p_afnd, estinp[cinp],*est);
+                }
+                else
+                    montar_estrela(novo_afnd, linha[cont], est); /*eg =estado gerador; estado em que comeM-CM-'a a estrela que nesse caso eh o proprio est*/
+            else
+            {
+                if(linha[cont] == '(' || linha[cont] == ')')
+                {
+                    if(linha[cont] == ')')
+                    {
+                        cinp-=1;
+                        estfimp[cfimp] = *est;
+                        for(i=0;i<cfimp;i++)
+                            inserir_nodo(&p_afnd->D,estfimp[i], 'E',*est+1);
+
+                    }
+                    else
+                    {
+                        inserir_nodo(&p_afnd->D,*est, 'E',*est+1);
+                        cinp+=1;
+                        estinp[cinp]=*est;
+                        *est+=1;
+                    }
+                }
+                else
+                    if(linha[cont] == '|')
+                    {
+                        estfimp[cfimp] = *est;
+                        cfimp+=1;
+                        inserir_nodo(&p_afnd->D,estinp[cinp], 'E',*est+1);
+                        *est+=1;
+                    }
+                    else
+                    {
+                        inserir_nodo(&p_afnd->D,*est, linha[cont],*est+1);
+                        *est+=1;
+                    }
+            }
+
+        }
+
+        cont++;
+    }
+
+    cont=0;
+
+
+}
 
 /* ---------------------------------------------------------------------- */
 /**

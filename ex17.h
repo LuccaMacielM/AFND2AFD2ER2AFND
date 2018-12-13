@@ -201,6 +201,30 @@ void removerDelta(delta_t **head, delta_t *r);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 
+/* tipo quintupla: representacao formal de um automato */
+typedef struct st_quintupla1
+{
+    unsigned short int K;  /* conjunto de estados */   
+    char A;                /* albeto*/ 
+    unsigned short int S;  /*estado inicial*/
+    t_lef1 *F;             /* lista de estados finais */
+    t_lft1 *D;             /* lista da funcao de transicao d(ei, le, ef) */
+} t_quintupla1;
+
+/* tipo lista encadeada simples da funcao de transicao */
+typedef struct st_lft1
+{
+    unsigned short int ei;  /* estado inicial */
+    char *le;               /* le (string com rotulos) */
+    unsigned short int ef;  /* estado final */
+    struct st_lft1 *prox;
+} t_lft1;
+
+separar_er(t_lft1 er_comp);
+t_quintupla1 *criar_quint(void);
+void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim);
+void montar_afnd(FILE *exp_regular);
+void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int *est);
 
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
