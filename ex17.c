@@ -1550,6 +1550,20 @@ void inserir_nodo()
 }
 
 /* ---------------------------------------------------------------------- */
+void imprimir_delta(t_lft1 *cabeca)
+{
+    t_lft1 = cabeca;
+
+    while(pl != NULL)
+    {
+        printf("%u -> %s -> %u\n", pl->ei, pl->le, pl->ef);
+        pl = pl->prox;
+    }
+    printf("\n");
+    return; 
+}
+
+/* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
  * @brief Prints help information and exit
