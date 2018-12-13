@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
   encurtaEstadoE(&q, 2);
   imprimeQuintupla(q);
   converte(&q, er);
-  printf("%s\n", er);
+  printf("A expressao final eh: %s\n", er);
  /* encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
