@@ -85,6 +85,7 @@
 
 /* limits */
 #define SBUFF 256 /**< String buffer */
+#define ZERO_EM_ASCII 48
 
 /* ---------------------------------------------------------------------- */
 /* globals */
