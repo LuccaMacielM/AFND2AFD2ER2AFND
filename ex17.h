@@ -132,7 +132,7 @@ typedef struct st_lprinc
 
 /* ---------------------------------------------------------------------- */
 /* prototypes */
-
+/* EX11 */
 int buscar_indice(t_lprinc  *a, t_ll *b);
 void gera_nova_quintupla(t_quintupla q,char *vet_alf);
 void imprimir_novos_finais(t_lprinc  *cabeca, t_lef *x);
@@ -162,6 +162,14 @@ void uniao_simultaneos(t_ll **cabeca, t_ll *lista);
 void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned short int f);
 void  imprimir_principal(t_lprinc *cabeca);
 void  imprimir_listinha(t_ll  *cabeca);
+
+/* ---------------------------------------------------------------------- */
+/* EX 12 */ 
+
+
+/* ---------------------------------------------------------------------- */
+/* EX 16 */
+
 
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
