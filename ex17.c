@@ -1313,6 +1313,19 @@ t_quintupla1 *criar_quint(void)
     return pl;
 }
 
+void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim)
+{
+    t_quintupla1 *p_quint = quint;
+    char c = 'E';
+
+    inserir_nodo(&p_quint->D, fim, c, fim+1); /*cria um estado final para o loop*/
+
+    inserir_nodo(&p_quint->D, fim+1, c, inicio+1);/*cria a transicao ultimo---> inicio+1*/
+
+    inserir_nodo(&p_quint->D, inicio, c, fim+1); /*cria a trasnicao inicio --->ultimo fechando o loop*/
+
+    return;
+}
 
 /* ---------------------------------------------------------------------- */
 /**
