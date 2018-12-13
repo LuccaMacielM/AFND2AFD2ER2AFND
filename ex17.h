@@ -169,6 +169,28 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf);
 /* ---------------------------------------------------------------------- */
 /* EX 12 */ 
 
+typedef struct st_ef
+{
+    int f;
+    struct st_ef *prox;
+} ef_t;
+
+typedef struct s_delta
+{
+    int ei;
+    char s[SBUFF];
+    int ef;
+    struct s_delta *prox;
+} delta_t;
+
+typedef struct s_quintupla
+{
+    int k;
+    char a;
+    int s0;
+    ef_t *f;
+    delta_t *d;
+} quint_t;
 
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
