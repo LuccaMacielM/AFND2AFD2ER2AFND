@@ -886,7 +886,148 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
+void encurtaEstadoKleene (quint_t *q, int e)
+{
+  delta_t *cont = q->d;
+  delta_t *head = NULL;
+  delta_t *aux = NULL;
+  delta_t *busc = NULL;
+  char kleene[SBUFF];
+  char vet[SBUFF];
 
+  while(cont != NULL)
+  {
+    if(cont->ei == e && cont->ef == e)
+      insereComVetorNaFuncaoDelta(&head, cont->ei, cont->s, cont->ef);
+    cont = cont->prox;
+  }
+  if(head == NULL)
+    return;
+  aux = head;
+  cont = q->d;
+
+  while(aux != NULL)
+  {
+    while(cont != NULL)
+    {
+      if(cont->ei == e && cont->ef != e)
+      {
+        montaKleene(aux->s, kleene);
+        printf("\nkleene: %s\n", kleene);
+        montaTransicao(kleene, cont->s, vet);
+        printf("\nTransicao: %s\n", vet);
+        busc = buscaDelta(q->d, aux->ei, aux->ef, aux->s);
+        if(busc != NULL)
+          removerDelta(&q->d, busc);
+        busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
+        if(busc != NULL)
+          removerDelta(&q->d, busc);
+        insereComVetorNaFuncaoDelta(&q->d, e, vet, cont->ef);
+      }
+      cont = cont->prox;
+    }
+    cont = q->d;
+    aux = aux->prox;
+  }
+
+  return;
+}
+
+/*void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
+{
+  delta_t *cont = *d;;
+  delta_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+  cont = malloc(sizeof(delta_t));
+  cont->prox = NULL;
+
+  cont->ei = ei;
+  strcpy(cont->s, s);
+  cont->ef = ef;
+
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *d = cont;
+
+  return;
+}
+
+void montaKleene(char kleene[SBUFF], char vet[SBUFF])
+{
+  char vetor[SBUFF];
+  int i = 1;
+  int j = 0;
+
+  vetor[0] = '(';
+  while(kleene[j] != '\0')
+  {
+    vetor[i+j] = kleene[j];
+    j++;
+  }
+  vetor[i+j] = ')';
+  vetor[i+j+1] = '*';
+
+  strcpy(vet, vetor);
+
+  return;
+}
+
+void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
+{
+    char vetor[SBUFF]="\0";
+    
+    strcat(vetor, sei);
+    strcat(vetor, sef);
+
+    strcpy(vet, vetor);
+     
+    printf("vet = %s",vet);
+    return;
+}
+
+delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
+{
+  delta_t *cont = head;
+
+  while(cont != NULL)
+  {
+    if(cont->ei == ei && cont->ef == ef && !strcmp(cont->s, vet))
+      return cont;
+    cont = cont->prox;
+  }
+
+  return NULL;
+}
+
+void removerDelta(delta_t **head, delta_t *r) 
+{
+  delta_t *cont = *head;
+  delta_t *plant = NULL;
+
+  if(r == NULL)
+    return;
+  while(cont != NULL && cont != r)
+  {
+    plant = cont;
+    cont = cont->prox;
+  }
+  if(cont == NULL) 
+    return;
+  if(plant != NULL) 
+    plant->prox = cont->prox;
+  else 
+    *head = cont->prox;
+  
+  free(cont);
+
+  return;
+} */
 /* ---------------------------------------------------------------------- */
 /* ex16 - ER to AFND */
 

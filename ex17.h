@@ -192,6 +192,7 @@ typedef struct s_quintupla
     delta_t *d;
 } quint_t;
 
+void encurtaEstadoKleene (quint_t *q, int e);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 
