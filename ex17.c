@@ -861,6 +861,12 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
         pa=pa->prox;
     }
     fprintf(file, "%i\n", maior);
+
+
+    fprintf(file, "#A\n");
+    int i = strlen(vet_alf);
+    char alf = vet_alf[i-1];
+    fprintf(file, "%c\n", alf);
 }
 
 
