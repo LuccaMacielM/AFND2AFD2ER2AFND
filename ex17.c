@@ -886,6 +886,26 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
+void converte (quint_t *q, char vet[SBUFF])
+{
+    char vetor[SBUFF];
+    char sai[SBUFF];
+    int i = 0;
+    int j = 0;
+    strcpy(vetor, q->d->s);
+    do
+    {
+        if(vetor[i] != 'E')
+        {
+            sai[j] = vetor[i];
+            j++;
+        }
+        i++;
+     }while(vetor[i] != '\0');
+     sai[j]='\0';
+     strcat(vet, sai);
+     return;
+}
 
 void pegaEntrada (quint_t *q, FILE *arq)
 {
