@@ -201,6 +201,12 @@ void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
 delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF]);
 void removerDelta(delta_t **head, delta_t *r);
+void imprimeFuncaoDelta (delta_t *head);
+void imprimeListaDeEstadosFinais (quint_t q);
+ void insereNosEstadosFinais (ef_t **p, int f);   
+ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef);
+ void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef);
+int finalDoVetor (char s[SBUFF]);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 

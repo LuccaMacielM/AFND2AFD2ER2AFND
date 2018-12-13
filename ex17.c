@@ -260,8 +260,8 @@ void ex11(char *optarg)
     unsigned i;
     char alfabeto[27]={"abcdefghijklmnopqrstuvwxyz"},vetor_alf[SBUFF]={0}; /*vetores para receber entradas especificas*/
     FILE *file = fopen(optarg,"r");
-    char linha[SBUFF][10]={0}, vetor_estf[SBUFF],auxestf[SBUFF],vetor_con[SBUFF],nest[SBUFF],esti[SBUFF],estf[SBUFF],conexoes[SBUFF];
-    int p , j, e, opt, a = 0, normal=0;
+    char linha[SBUFF][10]={0}, vetor_estf[SBUFF],auxestf[SBUFF],vetor_con[SBUFF];
+    int p , j, a = 0, normal=0;
     t_quintupla q;
     opterr =0;
 
