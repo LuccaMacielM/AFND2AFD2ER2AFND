@@ -1326,6 +1326,36 @@ void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short 
 
     return;
 }
+void montar_afnd(FILE *exp_regular)
+{
+    char ch;
+    int fsize=0;/*qauntidade de caracteres no arquivo*/
+    t_lft1 er_tok={0};
+
+    if(exp_regular == NULL)
+        return;
+
+    while( (ch=fgetc(exp_regular))!= EOF )
+    {
+        fsize++;
+        if(fsize==1)
+        {
+            er_tok.le = (char *)malloc(sizeof(char)*2);
+            er_tok.le[fsize-1]=ch;
+            er_tok.le[fsize]='\0';
+            continue;
+        }
+        er_tok.le = (char *) realloc(er_tok.le,strlen(er_tok.le)+2);
+        er_tok.le[fsize-1]=ch;
+        er_tok.le[fsize]='\0';
+    }
+
+    separar_er(er_tok);
+
+    fclose(exp_regular);
+
+    return;
+}
 
 /* ---------------------------------------------------------------------- */
 /**
