@@ -225,6 +225,7 @@ t_quintupla1 *criar_quint(void);
 void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim);
 void montar_afnd(FILE *exp_regular);
 void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int *est);
+void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est);
 
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
