@@ -1005,7 +1005,7 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
   return NULL;
 }
 
-/*void removerDelta(delta_t **head, delta_t *r) 
+void removerDelta(delta_t **head, delta_t *r) 
 {
   delta_t *cont = *head;
   delta_t *plant = NULL;
@@ -1027,7 +1027,7 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
   free(cont);
 
   return;
-} */
+} 
 /* ---------------------------------------------------------------------- */
 /* ex16 - ER to AFND */
 

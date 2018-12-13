@@ -197,6 +197,7 @@ void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
 void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
 delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF]);
+void removerDelta(delta_t **head, delta_t *r);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 
