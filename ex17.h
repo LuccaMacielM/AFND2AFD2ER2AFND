@@ -193,6 +193,7 @@ typedef struct s_quintupla
 } quint_t;
 
 void encurtaEstadoKleene (quint_t *q, int e);
+void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 

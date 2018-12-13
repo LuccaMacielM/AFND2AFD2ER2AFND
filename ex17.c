@@ -933,7 +933,7 @@ void encurtaEstadoKleene (quint_t *q, int e)
   return;
 }
 
-/*void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
+void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
 {
   delta_t *cont = *d;;
   delta_t *ant = NULL;
@@ -958,7 +958,7 @@ void encurtaEstadoKleene (quint_t *q, int e)
   return;
 }
 
-void montaKleene(char kleene[SBUFF], char vet[SBUFF])
+/*void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 {
   char vetor[SBUFF];
   int i = 1;
