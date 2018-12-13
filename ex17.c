@@ -886,6 +886,32 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
+
+void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
+{
+  delta_t *cont = *d;
+  delta_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+
+  cont = malloc(sizeof(delta_t));
+  cont->prox = NULL;
+  cont->ei = ei;
+  strcpy(cont->s, vet);
+  cont->ef = ef;
+
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *d = cont;
+
+  return;
+}
+
 void encurtaEstadoKleene (quint_t *q, int e)
 {
   delta_t *cont = q->d;
