@@ -196,6 +196,7 @@ void encurtaEstadoKleene (quint_t *q, int e);
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
 void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
+delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF]);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 
