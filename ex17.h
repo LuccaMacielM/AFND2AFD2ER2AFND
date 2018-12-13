@@ -200,6 +200,19 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF]);
 void removerDelta(delta_t **head, delta_t *r);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
+
+typedef struct st_quintupla1
+{
+    unsigned short int K;   
+    char A;                
+    unsigned short int S; 
+    t_lef1 *F;             
+    t_lft1 *D;        
+} t_quintupla1;
+
+
+
+
 separar_er(t_lft1 er_comp);
 t_quintupla1 *criar_quint(void);
 void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim);
