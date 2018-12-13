@@ -225,6 +225,10 @@ int main(int argc, char *argv[])
                 arq = fopen(sfile, "r");
                 pegaEntrada(q,arq); 
             case 'm':
+                arq = fopen(optarg,"r");
+                montar_afnd(arq);
+                break;
+
 
             case 'f':
                 strcpy(sfile, optarg);
