@@ -1356,6 +1356,76 @@ void montar_afnd(FILE *exp_regular)
 
     return;
 }
+void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int *est)
+{
+    unsigned short int cont=0,estinp[SBUFF]={0},cinp=0,estfimp[SBUFF]={0}, cfimp=0,i=0;
+    char v = 'E';
+    t_quintupla1 *p_afnd = novo_afnd;
+
+
+    while(linha[cont] != '\0')
+    {
+        if(linha[cont] != '.' && linha[cont] != '*' && linha[cont] != '\n')
+        {
+            if(cont == 0)
+            {
+                *est+=1;
+                inserir_nodo(&p_afnd->D, 0, v, *est);
+            }
+
+            if(linha[cont+1] == '*')
+                if(linha[cont] == ')')
+                {
+                    inserir_nodo(&p_afnd->D, *est, v, *est+1);
+                    *est+=1;
+                    montar_loop(p_afnd, estinp[cinp],*est);
+                }
+                else
+                    montar_estrela(novo_afnd, linha[cont], est); /*eg =estado gerador; estado em que comeM-CM-'a a estrela que nesse caso eh o proprio est*/
+            else
+            {
+                if(linha[cont] == '(' || linha[cont] == ')')
+                {
+                    if(linha[cont] == ')')
+                    {
+                        cinp-=1;
+                        estfimp[cfimp] = *est;
+                        for(i=0;i<cfimp;i++)
+                            inserir_nodo(&p_afnd->D,estfimp[i], 'E',*est+1);
+
+                    }
+                    else
+                    {
+                        inserir_nodo(&p_afnd->D,*est, 'E',*est+1);
+                        cinp+=1;
+                        estinp[cinp]=*est;
+                        *est+=1;
+                    }
+                }
+                else
+                    if(linha[cont] == '|')
+                    {
+                        estfimp[cfimp] = *est;
+                        cfimp+=1;
+                        inserir_nodo(&p_afnd->D,estinp[cinp], 'E',*est+1);
+                        *est+=1;
+                    }
+                    else
+                    {
+                        inserir_nodo(&p_afnd->D,*est, linha[cont],*est+1);
+                        *est+=1;
+                    }
+            }
+
+        }
+
+        cont++;
+    }
+
+    cont=0;
+
+
+}
 
 /* ---------------------------------------------------------------------- */
 /**
