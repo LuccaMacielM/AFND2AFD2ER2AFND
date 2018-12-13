@@ -1474,6 +1474,26 @@ void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int
 }
 
 /* ---------------------------------------------------------------------- */
+void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est)
+{
+    t_quintupla1 *p_quint = quint;
+    unsigned short int aux;
+    char v = 'E';
+
+    aux = *est; /* Auxiliar para salvar o estado que vai fazer o loop */
+
+    inserir_nodo(&p_quint->D, *est, v, *est+1);
+    *est += 1;
+
+    inserir_nodo(&p_quint->D, *est, c, *est+1);
+    *est += 1;
+
+    montar_loop(p_quint, aux, *est);
+    *est += 1;
+
+    return;
+}
+/* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
  * @brief Prints help information and exit
