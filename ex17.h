@@ -201,13 +201,14 @@ void removerDelta(delta_t **head, delta_t *r);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 
+/* tipo quintupla: representacao formal de um automato */
 typedef struct st_quintupla1
 {
-    unsigned short int K;   
-    char A;                
-    unsigned short int S; 
-    t_lef1 *F;             
-    t_lft1 *D;        
+    unsigned short int K;  /* conjunto de estados */   
+    char A;                /* albeto*/ 
+    unsigned short int S;  /*estado inicial*/
+    t_lef1 *F;             /* lista de estados finais */
+    t_lft1 *D;             /* lista da funcao de transicao d(ei, le, ef) */
 } t_quintupla1;
 
 
