@@ -403,7 +403,7 @@ void gera_nova_quintupla(t_quintupla  q , char *vet_alf)
 
     printf("---------------------------------------\n\n");
 
-    salva_saida11_no_txt(novas_transicoes, vet_alf);
+    salva_saida11_no_txt(novas_transicoes, vet_alf, q.F);
 
     return;
 }
@@ -844,7 +844,7 @@ void  imprimir_listinha(t_ll  *cabeca)
     printf("NULL\n");
 }
 
-void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
+void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x)
 {
     FILE *file;
     file = fopen("saida11.txt", "w");
@@ -871,6 +871,14 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 
     fprintf(file, "#S\n0\n");
 
+    fprintf(file, "#F\n");
+    t_lef *fin = x;
+    while(fin != NULL)
+    {
+        fprintf(file, "%u ", fin->fin);
+        fin = fin->prox;
+    }
+    fprintf(file, "\n");
 
     fprintf(file, "#D\n");
     t_lft *pl = cabeca;

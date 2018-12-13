@@ -164,7 +164,7 @@ void uniao_simultaneos(t_ll **cabeca, t_ll *lista);
 void inserir_outro_delta(t_lft **cabeca, unsigned short int i, char a, unsigned short int f);
 void  imprimir_principal(t_lprinc *cabeca);
 void  imprimir_listinha(t_ll  *cabeca);
-void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf);
+void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x);
 
 /* ---------------------------------------------------------------------- */
 /* EX 12 */ 
