@@ -933,6 +933,46 @@ void encurtaEstadoKleene (quint_t *q, int e)
   return;
 }
 
+void encurtaEstadoE (quint_t *q, int e)
+{
+  delta_t *qfinal = NULL;
+  delta_t *qinicial = NULL;
+  delta_t *cont = q->d;
+  delta_t *qicont = NULL;
+  delta_t *qfcont = NULL;
+  delta_t *busc = NULL;
+  char vet[SBUFF];
+  int i;
+ /* char kleene[SBUFF]; */
+
+  /* cria duas funcoes delta: */
+  /*uma com as transicoes que tem o estado a se apagar como estado final */
+  /*e uma com as transicoes que tem o estado a se apagar como estado inicial */
+  while(cont != NULL)
+  {
+    if(cont->ef == e)
+      insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
+    if(cont->ei == e)
+      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
+    cont = cont->prox;
+  }
+  if(qinicial->prox != NULL)
+  {
+    printf("\noutro inicial: ei = %d\n", qinicial->prox->ei);
+    encurtaEstadoE(q, qinicial->prox->ei);
+    return;
+  }
+
+  qicont = qinicial;
+  qfcont = qfinal;
+
+  printf("\nDEBUG\n\n");
+  printf("qicont\n");
+  imprimeFuncaoDelta(qicont);
+  printf("\nqfcont\n");
+  imprimeFuncaoDelta(qfcont);
+
+    
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
 {
   delta_t *cont = *d;;
