@@ -1099,6 +1099,29 @@ void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
   return;
 }
 
+void insereNosEstadosFinais (ef_t **p, int f)
+{
+  ef_t *cont = *p;;
+  ef_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+  cont = malloc(sizeof(ef_t));
+  cont->prox = NULL;
+
+  cont->f = f;
+
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *p = cont;
+
+  return;
+}
+
 void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 {
   char vetor[SBUFF];
@@ -1144,6 +1167,17 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
   }
 
   return NULL;
+}
+
+
+int finalDoVetor (char s[SBUFF])
+{
+  int i = 0;
+
+  while(s[i] != '\0')
+    i++;
+
+  return i;
 }
 
 void imprimeQuintupla (quint_t q)
