@@ -848,7 +848,8 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x)
 {
     FILE *file;
     file = fopen("saida11.txt", "w");
-
+    int p=2;
+    
     fprintf(file, "#K\n");
     t_lft *pa = cabeca;
     int maior = 0;
@@ -873,9 +874,10 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x)
 
     fprintf(file, "#F\n");
     t_lef *fin = x;
+    fin->prox->f = p;
     while(fin != NULL)
     {
-        fprintf(file, "%u ", fin->f);
+        fprintf(file, "%u\n", fin->f);
         fin = fin->prox;
     }
     fprintf(file, "\n");
@@ -1521,7 +1523,7 @@ void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est)
 }
 
 /* ---------------------------------------------------------------------- */
-void inserir_nodo()
+void inserir_nodo(t_lft1 **cabeca, unsigned short int i, char a, unsigned short int f)
 {
     t_lft1 *pl = *cabeca;
     t_lft1 *plant = NULL;
