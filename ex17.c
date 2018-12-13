@@ -870,6 +870,17 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 
 
     fprintf(file, "#S\n0\n");
+
+
+    fprintf(file, "#D\n");
+    t_lft *pl = cabeca;
+    while(pl != NULL)
+    {
+        fprintf(file, "%u %c %u\n", pl->ei, pl->le, pl->ef);
+        pl=pl->prox;
+    }
+
+    fclose(file);
 }
 
 
