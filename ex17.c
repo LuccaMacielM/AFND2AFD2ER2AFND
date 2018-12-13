@@ -403,6 +403,8 @@ void gera_nova_quintupla(t_quintupla  q , char *vet_alf)
 
     printf("---------------------------------------\n\n");
 
+    salva_saida11_no_txt(novas_transicoes, vet_alf);
+
     return;
 }
 
@@ -842,7 +844,11 @@ void  imprimir_listinha(t_ll  *cabeca)
     printf("NULL\n");
 }
 
-
+void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
+{
+    FILE *file;
+    file = fopen("saida11.txt", "w");
+}
 
 
 /* ---------------------------------------------------------------------- */
