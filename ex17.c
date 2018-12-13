@@ -207,7 +207,7 @@ int main(int argc, char *argv[])
      *        -v  verbose
      */
     opterr = 0;
-    while((opt = getopt(argc, argv, "vhV")) != EOF)
+    while((opt = getopt(argc, argv, "vhVf:")) != EOF)
     {
         switch(opt)
         {
@@ -236,6 +236,7 @@ int main(int argc, char *argv[])
                 }
                 fclose(arq);
                 printf("Arquivo aberto com sucesso\n");
+                ex11(optarg);
                 break;
 
             case '?':
@@ -254,11 +255,11 @@ int main(int argc, char *argv[])
 
 /* ---------------------------------------------------------------------- */
 /* ex11 - AFND to AFD */
-void ex11(void)
+void ex11(char *optarg)
 {
     unsigned i;
     char alfabeto[27]={"abcdefghijklmnopqrstuvwxyz"},vetor_alf[SBUFF]={0}; /*vetores para receber entradas especificas*/
-    FILE *file = fopen("01-entrada-AFND.txt","r");
+    FILE *file = fopen(optarg,"r");
     char linha[SBUFF][10]={0}, vetor_estf[SBUFF],auxestf[SBUFF],vetor_con[SBUFF],nest[SBUFF],esti[SBUFF],estf[SBUFF],conexoes[SBUFF];
     int p , j, e, opt, a = 0, normal=0;
     t_quintupla q;

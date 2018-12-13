@@ -152,7 +152,7 @@ void help(void); /**< Prints help information and exit */
 void copyr(void); /**< Prints copyright information and exit */
 void ex17_init(void);  /**< Initializes some operations before start */
 void ex17_update(void); /**< Updates values during program cycle */
-void ex11(void);
+void ex11(char *optarg);
 void inserir_delta(t_lft **cabeca, char *x);
 void inserir_estados_finais(t_lef **cabeca,unsigned short int ini);
 void quebra_vetores(char *a, char *vetor);
