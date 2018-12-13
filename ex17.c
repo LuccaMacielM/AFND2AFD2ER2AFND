@@ -27,6 +27,7 @@
  *   Eduardo Couto Dinarte                 <eduardocoutod3@gmail.com>      *
  *   Ewerton Gomes dos Santos              <ewerton.gomes.santos@gmail.com>*
  *   Iago Gade Gusmao Carrazzoni           <iagocarrazzoni@gmail.com>      *
+ *   Joao Gabriel Gouveia de Souza Brito   <gabrielgouveiabrito@gmail.com> *
  *   Lucas Tejo Sena                       <tejo.lucas13@gmail.com>        *
  *   Lucca Maciel de Moraes                <luccamacielm@gmail.com>        *
  *   Matheus Lemos Dantas                  <matheuslemosdantas@gmail.com>  *
@@ -882,6 +883,7 @@ void help(void)
     printf("\t\t %s <%s>\n", "Eduardo Couto Dinarte", "@dudecd3");
     printf("\t\t %s <%s>\n", "Ewerton Gomes dos Santos", "@Ewertongsantos");
     printf("\t\t %s <%s>\n", "Iago Gade Gusmao Carrazzoni", "@iagoggcarrazzoni");
+    printf("\t\t %s <%s>\n", "Joao Gabriel Gouveia de Souza Brito", "@gabrielgou");
     printf("\t\t %s <%s>\n", "Lucas Tejo Sena", "@lucas-sena");
     printf("\t\t %s <%s>\n", "Lucca Maciel de Moraes", "@LuccaMacielM");
     printf("\t\t %s <%s>\n", "Matheus Lemos Dantas", "@mld2000");
@@ -913,6 +915,7 @@ void copyr(void)
     printf("\t\t %s <%s>\n", "Eduardo Couto Dinarte", "eduardocoutod3@gmail.com");
     printf("\t\t %s <%s>\n", "Ewerton Gomes dos Santos", "ewerton.gomes.santos@gmail.com");
     printf("\t\t %s <%s>\n", "Iago Gade Gusmao Carrazzoni", "iagocarrazzoni@gmail.com");
+    printf("\t\t %s <%s>\n", "Joao Gabriel Gouveia de Souza Brito", "gabrielgouveiabrito@gmail.com");
     printf("\t\t %s <%s>\n", "Lucas Tejo Sena", "tejo.lucas13@gmail.com");
     printf("\t\t %s <%s>\n", "Lucca Maciel de Moraes", "luccamacielm@gmail.com");
     printf("\t\t %s <%s>\n", "Matheus Lemos Dantas", "matheuslemosdantas@gmail.com");
