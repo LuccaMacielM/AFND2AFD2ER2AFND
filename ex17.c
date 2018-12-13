@@ -1372,7 +1372,7 @@ void separar_er(t_lft1 er_comp)
     for(k=0;k<=aux1;k++)
         montar_trans(string[k] , novo_afnd,&est);/*-1 pq o contador comeca em 1*/
 
-    imprimir_delta(novo_afnd->D);
+    imprimir_delta1(novo_afnd->D);
 
     return;
 }
@@ -1552,9 +1552,9 @@ void inserir_nodo(t_lft1 **cabeca, unsigned short int i, char a, unsigned short 
 }
 
 /* ---------------------------------------------------------------------- */
-void imprimir_delta(t_lft1 *cabeca)
+void imprimir_delta1(t_lft1 *cabeca)
 {
-    t_lft1 = cabeca;
+    t_lft1 *pl = cabeca;
 
     while(pl != NULL)
     {

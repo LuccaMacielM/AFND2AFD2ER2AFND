@@ -204,6 +204,20 @@ void removerDelta(delta_t **head, delta_t *r);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 
+typedef struct st_lft1
+{
+    unsigned short int ei;  /* estado inicial */
+    char *le;               /* le (string com rotulos) */
+    unsigned short int ef;  /* estado final */
+    struct st_lft1 *prox;
+} t_lft1;
+
+typedef struct st_lef1
+{
+    unsigned short int f;
+    struct st_lef1 *prox;
+}t_lef1;
+
 /* tipo quintupla: representacao formal de um automato */
 typedef struct st_quintupla1
 {
@@ -215,29 +229,17 @@ typedef struct st_quintupla1
 } t_quintupla1;
 
 /* tipo lista encadeada simples da funcao de transicao */
-typedef struct st_lft1
-{
-    unsigned short int ei;  /* estado inicial */
-    char *le;               /* le (string com rotulos) */
-    unsigned short int ef;  /* estado final */
-    struct st_lft1 *prox;
-} t_lft1;
 
 /* Tipo lista encadeada simples dos estados finais */
-typedef struct st_lef1
-{
-    unsigned short int f;
-    struct st_lef1 *prox;
-}t_lef1;
 
-separar_er(t_lft1 er_comp);
+void separar_er(t_lft1 er_comp);
 t_quintupla1 *criar_quint(void);
 void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim);
 void montar_afnd(FILE *exp_regular);
 void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int *est);
 void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est);
 void inserir_nodo(t_lft1 **cabeca, unsigned short int i, char a, unsigned short int f);
-void imprimir_delta(t_lft1 *cabeca);
+void imprimir_delta1(t_lft1 *cabeca);
 
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
