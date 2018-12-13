@@ -211,6 +211,14 @@ typedef struct st_quintupla1
     t_lft1 *D;             /* lista da funcao de transicao d(ei, le, ef) */
 } t_quintupla1;
 
+/* tipo lista encadeada simples da funcao de transicao */
+typedef struct st_lft1
+{
+    unsigned short int ei;  /* estado inicial */
+    char *le;               /* le (string com rotulos) */
+    unsigned short int ef;  /* estado final */
+    struct st_lft1 *prox;
+} t_lft1;
 
 
 
