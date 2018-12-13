@@ -197,7 +197,7 @@ int main(int argc, char *argv[])
     FILE *arq = NULL;
     char sfile[SBUFF]; 
     char data[SBUFF];
-
+    quint_t *q = NULL;
     printf("Use uma das flags para realizar uma operacao. A flag -h eh a de ajuda.\n");
     IFDEBUG("Starting optarg loop...");
 
@@ -207,7 +207,7 @@ int main(int argc, char *argv[])
      *        -v  verbose
      */
     opterr = 0;
-    while((opt = getopt(argc, argv, "vhVf:")) != EOF)
+    while((opt = getopt(argc, argv, "vhVf:m:n:")) != EOF)
     {
         switch(opt)
         {
@@ -220,6 +220,11 @@ int main(int argc, char *argv[])
             case 'v':
                 verb++;
                 break;
+            case 'n':
+                strcpy(sfile, optarg);
+                arq = fopen(sfile, "r");
+                pegaEntrada(q,arq); 
+            case 'm':
 
             case 'f':
                 strcpy(sfile, optarg);
@@ -848,7 +853,6 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x)
 {
     FILE *file;
     file = fopen("saida11.txt", "w");
-    int p=2;
     
     fprintf(file, "#K\n");
     t_lft *pa = cabeca;
@@ -874,12 +878,12 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x)
 
     fprintf(file, "#F\n");
     t_lef *fin = x;
-    fin->prox->f = p;
     while(fin != NULL)
     {
         fprintf(file, "%u\n", fin->f);
         fin = fin->prox;
     }
+    fprintf(file, "2\n");
     fprintf(file, "\n");
 
     fprintf(file, "#D\n");
