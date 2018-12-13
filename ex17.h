@@ -226,6 +226,7 @@ void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short 
 void montar_afnd(FILE *exp_regular);
 void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int *est);
 void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est);
+void inserir_nodo(t_lft1 **cabeca, unsigned short int i, char a, unsigned short int f);
 
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
