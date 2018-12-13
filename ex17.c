@@ -887,30 +887,6 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
 
-void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
-{
-  delta_t *cont = *d;
-  delta_t *ant = NULL;
-
-  while(cont != NULL)
-  {
-    ant = cont;
-    cont = cont->prox;
-  }
-
-  cont = malloc(sizeof(delta_t));
-  cont->prox = NULL;
-  cont->ei = ei;
-  strcpy(cont->s, vet);
-  cont->ef = ef;
-
-  if(ant != NULL)
-    ant->prox = cont;
-  else
-    *d = cont;
-
-  return;
-}
 
 void encurtaEstadoKleene (quint_t *q, int e)
 {
@@ -1045,7 +1021,34 @@ void encurtaEstadoE (quint_t *q, int e)
   
   return;
 }
-   
+ 
+void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
+{
+  delta_t *cont = *d;
+  delta_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+
+  cont = malloc(sizeof(delta_t));
+  cont->prox = NULL;
+  cont->ei = ei;
+  strcpy(cont->s, vet);
+  cont->ef = ef;
+
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *d = cont;
+
+  return;
+}
+
+
+
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
 {
   delta_t *cont = *d;;
@@ -1116,6 +1119,42 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
   }
 
   return NULL;
+}
+
+void imprimeQuintupla (quint_t q)
+{
+  printf("QUINTUPLA\n\n");
+  printf("numero de estados = %d\n", q.k);
+  printf("ultima letra do alfabeto = %c\n", q.a);
+  printf("estado inicial = %d\n", q.s0);
+  imprimeListaDeEstadosFinais(q);
+  imprimeFuncaoDelta(q.d);
+
+  return;
+}
+
+void imprimeListaDeEstadosFinais (quint_t q)
+{
+  ef_t *cont = q.f;
+
+  while(cont != NULL)
+  {
+    printf("%d\n", cont->f);
+    cont = cont->prox;
+  }
+  return;
+}
+
+void imprimeFuncaoDelta (delta_t *head)
+{
+  delta_t *cont = head;
+
+  while(cont != NULL)
+  {
+    printf("(%d, %s, %d)\n", cont->ei, cont->s, cont->ef);
+    cont = cont->prox;
+  }
+  return;
 }
 
 void removerDelta(delta_t **head, delta_t *r) 
