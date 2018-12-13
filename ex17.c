@@ -1301,6 +1301,19 @@ void separar_er(t_lft1 er_comp)
     return;
 }
 
+t_quintupla1 *criar_quint(void)
+{
+    t_quintupla1 *pl =NULL;
+
+    pl = malloc(sizeof(t_quintupla1));
+
+    pl->D = NULL;
+    pl->F = NULL;
+
+    return pl;
+}
+
+
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
