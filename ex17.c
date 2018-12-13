@@ -887,6 +887,47 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 /* ---------------------------------------------------------------------- */
 /* ex12 - AFD to ER */
 
+void pegaEntrada (quint_t *q, FILE *arq)
+{
+    int pk;
+    char pa;
+    int ps0;
+    char s[SBUFF];
+    int pf[SBUFF];
+    int i = 0;
+    int c = 0;
+    int pei;
+    char pc;
+    int pef;
+    
+    q->f = NULL;
+    q->d = NULL; 
+    fscanf(arq, "%d\n%c\n%d\n", &pk, &pa, &ps0);
+    q->k = pk;
+    q->a = pa;
+    q->s0 = ps0;
+
+    fgets(s, sizeof(s), arq);
+    while(s[i] != '\0')
+    {
+        if(s[i] != ' ' && s[i] != '\n')
+        {
+            pf[c] = s[i] - ZERO_EM_ASCII;
+            c++;
+        }
+        i++;
+    }
+    
+    i = 0;
+    /* while(pf[i] != '\0') */
+    for(i = 0; i < c; i++)
+    {
+        insereNosEstadosFinais(&q->f, pf[i]);
+    }
+
+    retutn;
+}
+                                                            }
 
 void encurtaEstadoKleene (quint_t *q, int e)
 {
