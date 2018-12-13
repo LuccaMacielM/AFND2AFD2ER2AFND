@@ -889,6 +889,7 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf)
 
 void pegaEntrada (quint_t *q, FILE *arq)
 {
+    /* as variaveis que comecam com p irao apenas guardar momentaneamente os dados */
     int pk;
     char pa;
     int ps0;
@@ -914,6 +915,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
         {
             pf[c] = s[i] - ZERO_EM_ASCII;
             c++;
+    
         }
         i++;
     }
@@ -924,11 +926,14 @@ void pegaEntrada (quint_t *q, FILE *arq)
     {
         insereNosEstadosFinais(&q->f, pf[i]);
     }
-
-    retutn;
+    while(!feof(arq))
+    {
+        fscanf(arq, "%d %c %d\n", &pei, &pc, &pef);
+        insereNaFuncaoDelta(&q->d, pei, pc, pef);
+    }
+    return;
 }
-                                                            }
-
+   
 void encurtaEstadoKleene (quint_t *q, int e)
 {
   delta_t *cont = q->d;
