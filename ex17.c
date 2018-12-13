@@ -958,7 +958,7 @@ void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
   return;
 }
 
-/*void montaKleene(char kleene[SBUFF], char vet[SBUFF])
+void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 {
   char vetor[SBUFF];
   int i = 1;
@@ -978,7 +978,7 @@ void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
   return;
 }
 
-void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
+/*void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
 {
     char vetor[SBUFF]="\0";
     
