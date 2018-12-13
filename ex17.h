@@ -190,8 +190,10 @@ typedef struct s_quintupla
     int s0;
     ef_t *f;
     delta_t *d;
-} quint_t;
 
+} quint_t;
+void pegaEntrada (quint_t *q, FILE *arq);
+void converte (quint_t *q, char vet[SBUFF]);
 void encurtaEstadoKleene (quint_t *q, int e);
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
 void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
