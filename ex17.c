@@ -875,7 +875,7 @@ void salva_saida11_no_txt(t_lft *cabeca, char *vet_alf, t_lef *x)
     t_lef *fin = x;
     while(fin != NULL)
     {
-        fprintf(file, "%u ", fin->fin);
+        fprintf(file, "%u ", fin->f);
         fin = fin->prox;
     }
     fprintf(file, "\n");
