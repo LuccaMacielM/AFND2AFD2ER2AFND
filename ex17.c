@@ -1497,8 +1497,6 @@ void montar_trans(char linha[SBUFF], t_quintupla1 *novo_afnd, unsigned short int
     }
 
     cont=0;
-
-
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1521,6 +1519,36 @@ void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est)
 
     return;
 }
+
+/* ---------------------------------------------------------------------- */
+void inserir_nodo()
+{
+    t_lft1 *pl = *cabeca;
+    t_lft1 *plant = NULL;
+
+    while(pl != NULL)
+    {
+        plant = pl;
+        pl = pl->prox;
+    }
+
+    pl = malloc(sizeof(t_lft1));
+
+    pl->ei = i;
+    pl->le = malloc(sizeof(char));
+    *pl->le = a;
+    pl->le[1] = '\0';
+    pl->ef = f;
+    pl->prox = NULL;
+
+    if(plant != NULL)
+        plant->prox = pl;
+    else
+        *cabeca = pl;
+
+    return; 
+}
+
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
