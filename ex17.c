@@ -972,7 +972,54 @@ void encurtaEstadoE (quint_t *q, int e)
   printf("\nqfcont\n");
   imprimeFuncaoDelta(qfcont);
 
+  while(qicont != NULL)
+  {
+    while(qfcont != NULL)
+    {
+      for(i = 0; i < SBUFF; i++)
+        vet[i] = 0;
+      /*if(qfcont->ei == qfcont->ef)
+      {
+        montaKleene(qfcont->s, kleene);
+        busc = buscaTransicaoCabecaKleene(qfinal, qfcont->ei);
+        montaTransicaoKleene(qfcont, kleene, vet);
+        printf("\nTransicao criada: %s\n", vet);
+        novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+        printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
+      } */
+      /*else
+      { */
+      montaTransicao(qicont->s, qfcont->s, vet);
+      printf("\ntranseicao criada: %s\n", vet);
+      novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+      printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
+      /*} */
+      qfcont = qfcont->prox;
+    }
+    qfcont = qfinal;
+    while(qfcont != NULL)
+    {
+      busc = buscaDelta(q->d, qfcont->ei, qfcont->ef, qfcont->s);
+      if(busc != NULL)
+        removerDelta(&q->d, busc);
+      qfcont = qfcont->prox;
+    }
     
+    qicont = qicont->prox;
+  }
+  qicont = qinicial;
+  while(qicont != NULL)
+  {
+    busc = buscaDelta(q->d, qicont->ei, qicont->ef, qicont->s);
+    if(busc != NULL)
+      removerDelta(&q->d, busc);
+    qicont = qicont->prox;
+  }
+
+  
+  return;
+}
+   
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
 {
   delta_t *cont = *d;;
