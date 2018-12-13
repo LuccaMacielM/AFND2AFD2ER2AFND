@@ -1521,7 +1521,7 @@ void montar_estrela(t_quintupla1 *quint, char c, unsigned short int *est)
 }
 
 /* ---------------------------------------------------------------------- */
-void inserir_nodo()
+void inserir_nodo(t_lft1 **cabeca, unsigned short int i, char a, unsigned short int f)
 {
     t_lft1 *pl = *cabeca;
     t_lft1 *plant = NULL;
