@@ -220,6 +220,13 @@ typedef struct st_lft1
     struct st_lft1 *prox;
 } t_lft1;
 
+/* Tipo lista encadeada simples dos estados finais */
+typedef struct st_lef1
+{
+    unsigned short int f;
+    struct st_lef1 *prox;
+}t_lef1;
+
 separar_er(t_lft1 er_comp);
 t_quintupla1 *criar_quint(void);
 void montar_loop(t_quintupla1 *quint, unsigned short int inicio, unsigned short int fim);
