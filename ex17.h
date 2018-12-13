@@ -201,6 +201,7 @@ void removerDelta(delta_t **head, delta_t *r);
 /* ---------------------------------------------------------------------- */
 /* EX 16 */
 separar_er(t_lft1 er_comp);
+t_quintupla1 *criar_quint(void);
 /* ---------------------------------------------------------------------- */
 /* vi: set ai et ts=4 sw=4 tw=0 wm=0 fo=croql : C config for Vim modeline */
 /* Template by Dr. Beco <rcb at beco dot cc> Version 20160615.020326      */
