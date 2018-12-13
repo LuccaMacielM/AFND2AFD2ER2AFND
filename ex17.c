@@ -656,7 +656,6 @@ void inserir_delta(t_lft **cabeca, char *x)
     pl->le=x[1];
     aux[0]=x[2];
     pl->ef=atoi(aux);
-    pl->flag = -1;
 
     pl->prox=NULL;
 
